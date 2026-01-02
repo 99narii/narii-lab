@@ -1,0 +1,114 @@
+// ===========================================
+// ContactSection Styles
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+// -----------------------------
+// Section Container
+// 섹션 컨테이너 - 브랜드 컬러 배경
+// -----------------------------
+.section {
+  @include section-padding;
+  background-color: var(--color-primary);
+}
+
+// -----------------------------
+// Inner Container
+// 내부 컨테이너
+// -----------------------------
+.container {
+  @include container;
+}
+
+// -----------------------------
+// Content Wrapper
+// 콘텐츠 래퍼
+// -----------------------------
+.content {
+  text-align: center;
+  max-width: 40rem;
+  margin-inline: auto;
+
+  // 초기 상태 (애니메이션 전)
+  opacity: 0;
+  transform: translateY($spacing-6);
+
+  // 가시화 시 애니메이션
+  &.visible {
+    animation: fadeInUp $duration-slow $ease-out forwards;
+  }
+}
+
+// -----------------------------
+// Title
+// 제목
+// -----------------------------
+.title {
+  @include typography('heading-1');
+  color: var(--color-text-inverse);
+  margin-bottom: $spacing-5;
+
+  @include mobile {
+    font-size: $font-size-4xl;
+  }
+}
+
+// -----------------------------
+// Description
+// 설명
+// -----------------------------
+.description {
+  @include typography('body-lg');
+  color: var(--color-primary-100);
+  margin-bottom: $spacing-8;
+  line-height: $line-height-relaxed;
+
+  @include mobile {
+    font-size: $font-size-base;
+    margin-bottom: $spacing-6;
+  }
+}
+
+// -----------------------------
+// CTA Wrapper
+// CTA 버튼 래퍼
+// -----------------------------
+.ctaWrap {
+  margin-bottom: $spacing-6;
+}
+
+// -----------------------------
+// Email
+// 이메일 안내
+// -----------------------------
+.email {
+  font-size: $font-size-sm;
+  color: var(--color-primary-100);
+}
+
+// -----------------------------
+// Email Link
+// 이메일 링크
+// -----------------------------
+.emailLink {
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  @include transition-color;
+
+  &:hover {
+    color: var(--color-primary-50);
+    text-decoration: underline;
+  }
+}
+
+// -----------------------------
+// Animation
+// 애니메이션 키프레임
+// -----------------------------
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

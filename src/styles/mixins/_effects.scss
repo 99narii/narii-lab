@@ -1,0 +1,119 @@
+// ===========================================
+// Effects Mixins
+// ===========================================
+
+@use '../tokens/colors' as *;
+@use '../tokens/borders' as *;
+@use '../tokens/shadows' as *;
+@use '../tokens/animations' as *;
+
+// -----------------------------
+// Transition Mixins
+// -----------------------------
+@mixin transition-default {
+  transition: all $duration-normal $ease-out;
+}
+
+@mixin transition-fast {
+  transition: all $duration-fast $ease-out;
+}
+
+@mixin transition-slow {
+  transition: all $duration-slow $ease-out;
+}
+
+@mixin transition-color {
+  transition: color $duration-fast $ease-out,
+              background-color $duration-fast $ease-out,
+              border-color $duration-fast $ease-out;
+}
+
+// -----------------------------
+// Focus Styles (Accessibility)
+// -----------------------------
+@mixin focus-ring {
+  outline: none;
+  box-shadow: $shadow-focus;
+}
+
+@mixin focus-visible {
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+// -----------------------------
+// Hover Effects
+// -----------------------------
+@mixin hover-lift {
+  @include transition-default;
+
+  &:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: $shadow-lg;
+  }
+}
+
+@mixin hover-scale {
+  @include transition-default;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+@mixin hover-opacity {
+  @include transition-fast;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+// -----------------------------
+// Card Styles
+// -----------------------------
+@mixin card {
+  background-color: var(--color-bg-primary);
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-card;
+  border: $border-width-thin solid transparent;
+  @include transition-default;
+
+  // 다크모드에서 화이트 border
+  :root[data-theme='dark'] & {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &:hover {
+    box-shadow: $shadow-card-hover;
+  }
+}
+
+// -----------------------------
+// Overlay
+// -----------------------------
+@mixin overlay($color: $color-overlay-medium) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: $color;
+    pointer-events: none;
+  }
+}
+
+// -----------------------------
+// Glass Effect
+// -----------------------------
+@mixin glass($blur: 0.5rem) {
+  background-color: var(--color-glass-bg, rgba(255, 255, 255, 0.8));
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}

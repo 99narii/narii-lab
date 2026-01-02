@@ -1,0 +1,98 @@
+// ===========================================
+// Layout Mixins
+// ===========================================
+
+@use '../tokens/spacing' as *;
+
+// -----------------------------
+// Flexbox Mixins
+// -----------------------------
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+// -----------------------------
+// Grid Mixins
+// -----------------------------
+@mixin grid($columns: 1, $gap: $gap-md) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+@mixin grid-auto-fit($min-width: 15rem, $gap: $gap-md) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+// -----------------------------
+// Container Mixin
+// -----------------------------
+@mixin container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin-inline: auto;
+  padding-inline: $container-padding-x;
+}
+
+@mixin container-narrow {
+  width: 100%;
+  max-width: $container-narrow-width;
+  margin-inline: auto;
+  padding-inline: $container-padding-x;
+}
+
+// -----------------------------
+// Section Mixin
+// -----------------------------
+@mixin section-padding {
+  padding-block: $section-padding-y;
+}
+
+// -----------------------------
+// Full Bleed
+// -----------------------------
+@mixin full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+// -----------------------------
+// Aspect Ratio
+// -----------------------------
+@mixin aspect-ratio($width: 16, $height: 9) {
+  aspect-ratio: #{$width} / #{$height};
+}

@@ -1,0 +1,276 @@
+// ===========================================
+// Estimate Page Styles - 전면 개편
+// 7:3 레이아웃
+// ===========================================
+
+@use '../../styles/abstracts' as *;
+
+// -----------------------------
+// Main
+// 메인 영역
+// -----------------------------
+.main {
+  padding-top: $spacing-16;
+}
+
+// -----------------------------
+// Hero Section
+// 히어로 섹션
+// -----------------------------
+.hero {
+  padding: $spacing-16 $container-padding-x;
+  text-align: center;
+}
+
+.container {
+  @include container;
+}
+
+// -----------------------------
+// Section
+// 견적 섹션
+// -----------------------------
+.section {
+  @include section-padding;
+}
+
+// -----------------------------
+// Estimate Container
+// 7:3 레이아웃 컨테이너
+// -----------------------------
+.estimateContainer {
+  @include container;
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  gap: $spacing-8;
+  align-items: start;
+
+  @include media-down('lg') {
+    grid-template-columns: 1fr;
+    gap: $spacing-6;
+  }
+}
+
+// -----------------------------
+// Options Panel (Left - 70%)
+// 옵션 선택 패널
+// -----------------------------
+.optionsPanel {
+  @include card;
+  padding: $spacing-8;
+
+  @include mobile {
+    padding: $spacing-6;
+  }
+}
+
+// -----------------------------
+// Options Grid
+// 옵션 그리드
+// -----------------------------
+.optionsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-8;
+}
+
+// -----------------------------
+// Option Group
+// 옵션 그룹
+// -----------------------------
+.optionGroup {
+  // 그룹 스타일
+}
+
+.optionLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wider;
+  margin-bottom: $spacing-3;
+}
+
+.optionButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-2;
+}
+
+// -----------------------------
+// Option Button
+// 옵션 버튼
+// -----------------------------
+.optionButton {
+  padding: $spacing-3 $spacing-5;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg-secondary);
+  border: $border-width-thin solid var(--color-border-default);
+  border-radius: $border-radius-full;
+  cursor: pointer;
+  @include transition-default;
+
+  &:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  &.selected {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: $color-neutral-0;
+  }
+}
+
+// -----------------------------
+// Select
+// 셀렉트 박스
+// -----------------------------
+.select {
+  width: 100%;
+  max-width: 16rem;
+  padding: $spacing-3 $spacing-4;
+  font-size: $font-size-base;
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg-primary);
+  border: $border-width-thin solid var(--color-border-default);
+  border-radius: $border-radius-default;
+  cursor: pointer;
+  @include transition-default;
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  &.selected {
+    color: var(--color-primary);
+    font-weight: $font-weight-medium;
+    border-color: var(--color-primary);
+  }
+}
+
+// -----------------------------
+// Summary Panel (Right - 30%)
+// 요약 패널
+// -----------------------------
+.summaryPanel {
+  position: sticky;
+  top: calc($spacing-16 + $spacing-4);
+
+  @include media-down('lg') {
+    position: static;
+  }
+}
+
+.summaryCard {
+  @include card;
+  padding: $spacing-6;
+}
+
+// -----------------------------
+// Dynamic Text Wrapper
+// 동적 텍스트 래퍼 (우측 패널)
+// -----------------------------
+.dynamicTextWrapper {
+  margin-bottom: $spacing-6;
+  padding-bottom: $spacing-6;
+  border-bottom: $border-width-thin solid var(--color-border-light);
+}
+
+// -----------------------------
+// Dynamic Text
+// 동적 텍스트 스타일
+// -----------------------------
+.dynamicText {
+  font-family: $font-family-display;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-relaxed;
+  color: var(--color-text-primary);
+
+  @include mobile {
+    font-size: $font-size-base;
+  }
+}
+
+.placeholder {
+  color: var(--color-neutral-300);
+  @include transition-color;
+}
+
+.filled {
+  color: var(--color-primary);
+  font-weight: $font-weight-bold;
+  @include transition-color;
+}
+
+.connector {
+  color: var(--color-text-secondary);
+}
+
+// -----------------------------
+// Estimate Result
+// 예상 견적 영역
+// -----------------------------
+.estimateResult {
+  text-align: center;
+  margin-bottom: $spacing-6;
+}
+
+.resultTitle {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wider;
+  margin-bottom: $spacing-4;
+}
+
+.priceBox {
+  padding: $spacing-4;
+  background-color: var(--color-bg-secondary);
+  border-radius: $border-radius-default;
+  margin-bottom: $spacing-3;
+}
+
+.priceValue {
+  font-family: $font-family-display;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-primary);
+
+  @include mobile {
+    font-size: $font-size-lg;
+  }
+}
+
+.resultPlaceholder {
+  padding: $spacing-4;
+  background-color: var(--color-bg-secondary);
+  border-radius: $border-radius-default;
+  margin-bottom: $spacing-3;
+  font-size: $font-size-sm;
+  color: var(--color-text-tertiary);
+}
+
+.disclaimer {
+  font-size: $font-size-xs;
+  color: var(--color-text-tertiary);
+}
+
+// -----------------------------
+// Button Group
+// 버튼 그룹
+// -----------------------------
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+}

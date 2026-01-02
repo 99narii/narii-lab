@@ -1,0 +1,168 @@
+// ===========================================
+// Contact Page Styles
+// ===========================================
+
+@use '../../styles/abstracts' as *;
+
+// -----------------------------
+// Main
+// 메인 영역
+// -----------------------------
+.main {
+  padding-top: $spacing-16;
+}
+
+// -----------------------------
+// Hero Section
+// 히어로 섹션
+// -----------------------------
+.hero {
+  padding: $spacing-20 $container-padding-x;
+  text-align: center;
+}
+
+// -----------------------------
+// Section
+// 일반 섹션
+// -----------------------------
+.section {
+  @include section-padding;
+}
+
+// -----------------------------
+// Container
+// 컨테이너
+// -----------------------------
+.container {
+  @include container;
+}
+
+.containerNarrow {
+  @include container-narrow;
+}
+
+// -----------------------------
+// Grid
+// 그리드 레이아웃
+// -----------------------------
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: $spacing-12;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $spacing-8;
+  }
+}
+
+// -----------------------------
+// Contact Info
+// 연락처 정보 영역
+// -----------------------------
+.contactInfo {
+  // 스타일
+}
+
+.infoTitle {
+  @include typography('heading-3');
+  color: var(--color-text-primary);
+  margin-bottom: $spacing-8;
+}
+
+.infoItem {
+  margin-bottom: $spacing-6;
+}
+
+.infoLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wide;
+  margin-bottom: $spacing-2;
+}
+
+.infoValue {
+  @include typography('body-lg');
+  color: var(--color-text-primary);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--color-text-brand);
+  }
+}
+
+// -----------------------------
+// Form
+// 폼 컨테이너
+// -----------------------------
+.form {
+  @include card;
+  padding: $spacing-8;
+
+  @include mobile {
+    padding: $spacing-6;
+  }
+}
+
+// -----------------------------
+// Field
+// 폼 필드
+// -----------------------------
+.field {
+  margin-bottom: $spacing-5;
+}
+
+// -----------------------------
+// Label
+// 라벨
+// -----------------------------
+.label {
+  display: block;
+  @include typography('body');
+  font-weight: $font-weight-medium;
+  color: var(--color-text-primary);
+  margin-bottom: $spacing-2;
+}
+
+// -----------------------------
+// Input & Textarea
+// 입력 필드
+// -----------------------------
+.input,
+.textarea {
+  width: 100%;
+  padding: $spacing-3 $spacing-4;
+  font-size: $font-size-base;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  border: $border-width-thin solid var(--color-border-default);
+  border-radius: $border-radius-default;
+  @include transition-default;
+
+  &::placeholder {
+    color: var(--color-text-tertiary);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-border-brand);
+    box-shadow: $shadow-focus;
+  }
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+// -----------------------------
+// Error Message
+// 에러 메시지
+// -----------------------------
+.error {
+  margin-top: $spacing-2;
+  font-size: $font-size-sm;
+  color: $color-error;
+}

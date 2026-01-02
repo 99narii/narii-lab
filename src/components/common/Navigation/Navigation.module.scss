@@ -1,0 +1,110 @@
+// ===========================================
+// Navigation Styles
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+// -----------------------------
+// Nav Container
+// 내비게이션 컨테이너
+// -----------------------------
+.nav {
+  // Desktop
+  @include desktop {
+    display: block;
+  }
+
+  // Mobile: 숨김 처리
+  @include mobile {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 80%;
+    max-width: 20rem;
+    background-color: var(--color-bg-primary);
+    box-shadow: $shadow-xl;
+    transform: translateX(100%);
+    @include transition-default;
+    z-index: 100;
+    padding-top: $spacing-20;
+
+    // 열림 상태
+    &.open {
+      transform: translateX(0);
+    }
+  }
+}
+
+// -----------------------------
+// Navigation List
+// 내비게이션 리스트
+// -----------------------------
+.list {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+
+  // Mobile
+  @include mobile {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+}
+
+// -----------------------------
+// Navigation Item
+// 내비게이션 아이템
+// -----------------------------
+.item {
+  // Mobile
+  @include mobile {
+    border-bottom: $border-width-thin solid var(--color-border-light);
+  }
+}
+
+// -----------------------------
+// Navigation Link
+// 내비게이션 링크
+// -----------------------------
+.link {
+  display: block;
+  padding: $spacing-2 $spacing-4;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: $border-radius-default $border-radius-default 0 0;
+  @include transition-default;
+  @include focus-visible;
+
+  // 호버 상태 - 책갈피 스타일
+  &:hover {
+    color: var(--color-text-inverse);
+    background-color: var(--color-primary-200);
+  }
+
+  // 활성화 상태 - 책갈피 스타일, 흰색 폰트
+  &.active {
+    color: var(--color-text-inverse);
+    font-weight: $font-weight-semibold;
+    background-color: var(--color-primary);
+  }
+
+  // Mobile
+  @include mobile {
+    padding: $spacing-4 $spacing-6;
+    border-radius: 0;
+
+    &:hover {
+      background-color: var(--color-neutral-50);
+      color: var(--color-text-brand);
+    }
+
+    &.active {
+      background-color: var(--color-primary);
+      color: var(--color-text-inverse);
+    }
+  }
+}

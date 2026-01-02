@@ -1,0 +1,199 @@
+// ===========================================
+// PortfolioPreview Styles
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+// -----------------------------
+// Section Container
+// 섹션 컨테이너
+// -----------------------------
+.section {
+  @include section-padding;
+}
+
+// -----------------------------
+// Inner Container
+// 내부 컨테이너
+// -----------------------------
+.container {
+  @include container;
+}
+
+// -----------------------------
+// Portfolio Grid
+// 포트폴리오 그리드 (3x2)
+// -----------------------------
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-6;
+  margin-bottom: $spacing-12;
+
+  @include media-down('lg') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $spacing-4;
+  }
+}
+
+// -----------------------------
+// Grid Item
+// 그리드 아이템
+// -----------------------------
+.item {
+  // 초기 상태 (애니메이션 전)
+  opacity: 0;
+  transform: translateY($spacing-6);
+
+  // 가시화 시 애니메이션
+  .visible & {
+    animation: fadeInUp $duration-normal $ease-out forwards;
+  }
+}
+
+// -----------------------------
+// Portfolio Card
+// 포트폴리오 카드
+// -----------------------------
+.card {
+  display: block;
+  text-decoration: none;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  background-color: var(--color-bg-primary);
+  box-shadow: $shadow-sm;
+  @include transition-default;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-$spacing-2);
+
+    .imageWrap {
+      &::after {
+        opacity: 0.6;
+      }
+    }
+
+    .imagePlaceholder {
+      transform: scale(1.05);
+    }
+  }
+}
+
+// -----------------------------
+// Image Wrapper
+// 이미지 래퍼
+// -----------------------------
+.imageWrap {
+  position: relative;
+  @include aspect-ratio(16, 10);
+  overflow: hidden;
+  background-color: var(--color-neutral-200);
+
+  // 오버레이
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(0, 0, 0, 0.3)
+    );
+    opacity: 0;
+    @include transition-default;
+  }
+}
+
+// -----------------------------
+// Image Placeholder
+// 이미지 플레이스홀더 (실제 이미지 없을 시)
+// -----------------------------
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  @include flex-center;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-100) 0%,
+    var(--color-primary-200) 100%
+  );
+  @include transition-default;
+}
+
+.placeholderText {
+  font-family: $font-family-display;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-primary);
+  opacity: 0.5;
+
+  @include mobile {
+    font-size: $font-size-xl;
+  }
+}
+
+// -----------------------------
+// Card Info
+// 카드 정보 영역
+// -----------------------------
+.info {
+  padding: $spacing-5;
+}
+
+// -----------------------------
+// Category
+// 카테고리 라벨
+// -----------------------------
+.category {
+  display: inline-block;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wide;
+  margin-bottom: $spacing-2;
+}
+
+// -----------------------------
+// Title
+// 프로젝트 제목
+// -----------------------------
+.title {
+  @include typography('heading-4');
+  color: var(--color-text-primary);
+  margin-bottom: $spacing-1;
+  @include text-truncate;
+}
+
+// -----------------------------
+// Client
+// 클라이언트명
+// -----------------------------
+.client {
+  font-size: $font-size-sm;
+  color: var(--color-text-secondary);
+}
+
+// -----------------------------
+// CTA Wrapper
+// CTA 버튼 래퍼
+// -----------------------------
+.ctaWrap {
+  text-align: center;
+}
+
+// -----------------------------
+// Animation
+// 애니메이션 키프레임
+// -----------------------------
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,232 @@
+// ===========================================
+// Header Styles
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+// -----------------------------
+// Header Container
+// 헤더 메인 컨테이너
+// -----------------------------
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: transparent;
+  @include transition-default;
+
+  // 스크롤 시 배경 추가
+  &.scrolled {
+    background-color: var(--color-glass-bg);
+    backdrop-filter: blur(0.5rem);
+    box-shadow: $shadow-sm;
+  }
+}
+
+// -----------------------------
+// Inner Container
+// 헤더 내부 컨테이너 - 책갈피 효과를 위해 하단 정렬
+// -----------------------------
+.container {
+  @include container;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: $spacing-16;
+  padding-bottom: 0;
+
+  @include mobile {
+    height: $spacing-14;
+    align-items: center;
+  }
+}
+
+// -----------------------------
+// Right Section
+// 우측 영역 (내비게이션 + 토글)
+// -----------------------------
+.rightSection {
+  display: flex;
+  align-items: flex-end;
+  gap: $spacing-4;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+// -----------------------------
+// Desktop Navigation
+// 데스크탑 내비게이션 영역
+// -----------------------------
+.desktopNav {
+  // 스타일
+}
+
+// -----------------------------
+// Toggle Group
+// 토글 버튼 그룹
+// -----------------------------
+.toggleGroup {
+  display: flex;
+  align-items: center;
+  gap: $spacing-1;
+  padding-bottom: $spacing-2;
+}
+
+// -----------------------------
+// Toggle Button
+// 토글 버튼 (언어/테마)
+// -----------------------------
+.toggleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $spacing-10;
+  height: $spacing-10;
+  background: none;
+  border: none;
+  border-radius: $border-radius-default;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  @include transition-default;
+
+  &:hover {
+    background-color: var(--color-neutral-100);
+    color: var(--color-text-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// -----------------------------
+// Language Text
+// 언어 텍스트
+// -----------------------------
+.langText {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  letter-spacing: $letter-spacing-wide;
+}
+
+// -----------------------------
+// Theme Icon
+// 테마 아이콘
+// -----------------------------
+.themeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// -----------------------------
+// Mobile Navigation
+// 모바일 내비게이션 영역
+// -----------------------------
+.mobileNav {
+  @include desktop {
+    display: none;
+  }
+}
+
+// -----------------------------
+// Mobile Menu Button
+// 햄버거 메뉴 버튼
+// -----------------------------
+.menuButton {
+  display: none;
+  position: relative;
+  width: $spacing-10;
+  height: $spacing-10;
+  background: none;
+  border: none;
+  cursor: pointer;
+  @include focus-visible;
+  border-radius: $border-radius-default;
+
+  @include mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:hover {
+    background-color: var(--color-neutral-100);
+  }
+}
+
+// -----------------------------
+// Menu Icon (Hamburger)
+// 햄버거 아이콘
+// -----------------------------
+.menuIcon {
+  position: relative;
+  width: 1.25rem;
+  height: 0.125rem;
+  background-color: var(--color-text-primary);
+  border-radius: $border-radius-full;
+  @include transition-default;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0.125rem;
+    background-color: var(--color-text-primary);
+    border-radius: $border-radius-full;
+    @include transition-default;
+  }
+
+  &::before {
+    top: -0.375rem;
+  }
+
+  &::after {
+    bottom: -0.375rem;
+  }
+
+  // 열림 상태: X 모양으로 변환
+  .open & {
+    background-color: transparent;
+
+    &::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      bottom: 0;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+// -----------------------------
+// Overlay
+// 모바일 메뉴 오버레이
+// -----------------------------
+.overlay {
+  display: none;
+
+  @include mobile {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+  }
+}

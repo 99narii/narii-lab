@@ -1,0 +1,60 @@
+// ===========================================
+// Typography Mixins
+// ===========================================
+
+@use '../tokens/typography' as *;
+
+// -----------------------------
+// Typography Preset Mixin
+// -----------------------------
+@mixin typography($preset) {
+  @if map-has-key($typography-presets, $preset) {
+    $styles: map-get($typography-presets, $preset);
+
+    @if map-has-key($styles, font-size) {
+      font-size: map-get($styles, font-size);
+    }
+    @if map-has-key($styles, font-weight) {
+      font-weight: map-get($styles, font-weight);
+    }
+    @if map-has-key($styles, line-height) {
+      line-height: map-get($styles, line-height);
+    }
+    @if map-has-key($styles, letter-spacing) {
+      letter-spacing: map-get($styles, letter-spacing);
+    }
+    @if map-has-key($styles, font-family) {
+      font-family: map-get($styles, font-family);
+    }
+  } @else {
+    @warn "Typography preset '#{$preset}' not found.";
+  }
+}
+
+// -----------------------------
+// Text Utilities
+// -----------------------------
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-truncate-lines($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin text-balance {
+  text-wrap: balance;
+}
+
+// -----------------------------
+// Font Smoothing
+// -----------------------------
+@mixin font-smooth {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,262 @@
+// ===========================================
+// HeroSection Styles
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+// -----------------------------
+// Hero Section Container
+// 히어로 섹션 컨테이너 - 풀 화면
+// -----------------------------
+.hero {
+  min-height: 100vh;
+  width: 100%;
+  padding: 0;
+  // 헤더 높이만큼 상단 여백 추가하여 겹침 방지
+  padding-top: $spacing-16;
+
+  @include mobile {
+    padding-top: $spacing-14;
+  }
+}
+
+// -----------------------------
+// Board Container
+// 보드 컨테이너 - 헤더 바로 아래부터 시작, 거의 풀 화면
+// -----------------------------
+.board {
+  margin-inline: $spacing-4;
+  // 화면 높이에서 헤더와 여백 제외
+  min-height: calc(100vh - $spacing-16 - $spacing-16 - $spacing-4);
+
+  // 보드 스타일: 두꺼운 border, 부드러운 radius
+  border: $border-width-ultra solid var(--color-border-brand);
+  border-radius: $border-radius-2xl;
+  background-color: var(--color-bg-primary);
+
+  // Flexbox 중앙 정렬
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+
+  // 초기 상태 (애니메이션 전)
+  opacity: 0;
+  transform: scale(0.98);
+
+  // 가시화 시 애니메이션
+  &.visible {
+    animation: boardReveal $duration-slow $ease-out forwards;
+  }
+
+  @include mobile {
+    margin-inline: $spacing-3;
+    min-height: calc(100vh - $spacing-14 - $spacing-14 - $spacing-3);
+    border-width: $border-width-heavy;
+    border-radius: $border-radius-xl;
+  }
+}
+
+// -----------------------------
+// Content
+// 콘텐츠 래퍼
+// -----------------------------
+.content {
+  padding: $spacing-8;
+  max-width: 100%;
+
+  @include mobile {
+    padding: $spacing-4;
+  }
+}
+
+// -----------------------------
+// Title
+// 메인 타이틀 - 적당한 크기
+// -----------------------------
+.title {
+  @include typography('display-2');
+  color: var(--color-text-secondary);
+  margin-bottom: $spacing-24;
+
+  @include mobile {
+    font-size: $font-size-xl;
+    margin-bottom: $spacing-8;
+  }
+}
+
+.titleLine {
+  display: block;
+}
+
+// -----------------------------
+// Title Character
+// 개별 글자 - 씰룩쌜룩 애니메이션
+// -----------------------------
+.titleChar {
+  display: inline-block;
+}
+
+// 애니메이션 활성화 상태
+.titleAnimating {
+  .titleChar {
+    animation: wiggle 0.5s ease-in-out infinite;
+  }
+}
+
+// 씰룩쌜룩 애니메이션
+@keyframes wiggle {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-3px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(3px) rotate(2deg);
+  }
+}
+
+// -----------------------------
+// Service List
+// 서비스 키워드 리스트
+// -----------------------------
+.serviceList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $spacing-8;
+  margin-bottom: $spacing-12;
+  // 최소 높이 확보
+  min-height: $spacing-20;
+
+  @include mobile {
+    gap: $spacing-4;
+    margin-bottom: $spacing-8;
+    min-height: $spacing-14;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+// -----------------------------
+// Service Item
+// 개별 서비스 키워드 - 더 크게
+// -----------------------------
+.serviceItem {
+  // 더 큰 크기: 7rem
+  font-family: $font-family-display;
+  font-size: 7rem;
+  font-weight: $font-weight-extrabold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+  // primary color (primary-200 in dark mode)
+  color: var(--color-primary);
+  text-transform: lowercase;
+
+  // 초기 상태: 숨김
+  opacity: 0;
+  transform: translateY($spacing-8) scale(0.8);
+  transition: opacity $duration-normal $ease-out,
+              transform $duration-normal $ease-out;
+
+  // 가시화 상태
+  &.serviceVisible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+
+  @include mobile {
+    font-size: $font-size-5xl;
+  }
+}
+
+// -----------------------------
+// CTA Button Group
+// CTA 버튼 그룹
+// -----------------------------
+.ctaGroup {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $spacing-4;
+
+  // 초기 상태: 숨김
+  opacity: 0;
+  transform: translateY($spacing-4);
+  transition: opacity $duration-normal $ease-out,
+              transform $duration-normal $ease-out;
+  transition-delay: $duration-fast;
+
+  // 가시화 상태
+  &.ctaVisible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @include mobile {
+    flex-direction: column;
+    gap: $spacing-3;
+  }
+}
+
+// -----------------------------
+// Scroll Hint
+// 스크롤 유도 표시
+// -----------------------------
+.scrollHint {
+  position: absolute;
+  bottom: $spacing-8;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-2;
+  animation: bounce 1.5s $ease-in-out infinite;
+
+  @include mobile {
+    bottom: $spacing-6;
+  }
+}
+
+.scrollText {
+  font-size: $font-size-xs;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-widest;
+}
+
+.scrollArrow {
+  font-size: $font-size-lg;
+  color: var(--color-primary);
+}
+
+// -----------------------------
+// Animations
+// 애니메이션 키프레임
+// -----------------------------
+
+// 보드 등장 애니메이션
+@keyframes boardReveal {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// 바운스 애니메이션 (스크롤 유도)
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY($spacing-2);
+  }
+}

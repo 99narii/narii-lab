@@ -1,0 +1,84 @@
+// ===========================================
+// CoverAnimation Styles
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+// -----------------------------
+// Cover Container
+// 풀스크린 커버 컨테이너 - 브랜드 컬러 배경
+// -----------------------------
+.cover {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  @include flex-center;
+  // 브랜드 컬러 배경 - primary color
+  background-color: var(--color-primary);
+  transition: opacity $duration-fadeout $ease-out;
+
+  // 페이드아웃 상태
+  &.fadeOut {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+// -----------------------------
+// Logo SVG
+// 로고 SVG 컨테이너
+// -----------------------------
+.logo {
+  width: clamp(18rem, 60vw, 30rem);
+  height: auto;
+}
+
+// -----------------------------
+// Text Group (narii)
+// 기본 텍스트 그룹 - 흰색
+// -----------------------------
+.textGroup {
+  // 스타일
+}
+
+// -----------------------------
+// Letter Path
+// 개별 글자 path - 흰색
+// -----------------------------
+.letter {
+  // 흰색 텍스트
+  stroke: var(--color-neutral-0);
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: drawLetter $duration-handwriting $ease-smooth forwards;
+}
+
+// -----------------------------
+// Text Group Accent (lab)
+// 강조 텍스트 그룹 - 검정색
+// -----------------------------
+.textGroupAccent {
+  // 스타일
+}
+
+// -----------------------------
+// Letter Accent Path
+// 강조 글자 path - 검정색
+// -----------------------------
+.letterAccent {
+  // 검정색 텍스트
+  stroke: var(--color-neutral-900);
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: drawLetter $duration-handwriting $ease-smooth forwards;
+}
+
+// -----------------------------
+// Draw Letter Animation
+// 글자 그리기 애니메이션
+// -----------------------------
+@keyframes drawLetter {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

@@ -1,0 +1,77 @@
+// ===========================================
+// Logo Styles
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+// -----------------------------
+// Link Wrapper
+// 로고를 감싸는 링크 스타일
+// -----------------------------
+.link {
+  display: inline-flex;
+  text-decoration: none;
+  @include focus-visible;
+}
+
+// -----------------------------
+// Logo Base
+// 로고 기본 스타일
+// -----------------------------
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: $spacing-1;
+  font-family: $font-family-display;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-xl;
+  letter-spacing: $letter-spacing-tight;
+  @include transition-color;
+}
+
+// -----------------------------
+// Logo Text
+// 로고 텍스트 스타일
+// -----------------------------
+.text {
+  color: var(--color-text-primary);
+}
+
+// -----------------------------
+// Accent (lab)
+// 'lab' 부분 강조 스타일
+// -----------------------------
+.accent {
+  color: var(--color-primary);
+  margin-left: $spacing-1;
+}
+
+// -----------------------------
+// Variants
+// 로고 변형 스타일
+// -----------------------------
+
+// Default: 기본 스타일
+.default {
+  .text {
+    color: var(--color-text-primary);
+  }
+}
+
+// White: 어두운 배경에서 사용 (푸터 등) - 항상 흰색 유지
+.white {
+  .text {
+    // 다크모드에서도 항상 흰색 유지
+    color: $color-neutral-0;
+  }
+
+  .accent {
+    // 다크모드에서도 primary-200 유지
+    color: $color-primary-200;
+  }
+}
+
+// Compact: 작은 사이즈
+.compact {
+  font-size: $font-size-lg;
+}

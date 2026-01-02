@@ -1,0 +1,74 @@
+// ===========================================
+// Responsive Mixins
+// ===========================================
+
+@use '../tokens/breakpoints' as *;
+
+// -----------------------------
+// Media Query Mixins
+// -----------------------------
+
+// Mobile first (min-width)
+@mixin media-up($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$breakpoint}' not found.";
+  }
+}
+
+// Desktop first (max-width)
+@mixin media-down($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: calc(map-get($breakpoints, $breakpoint) - 1px)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint '#{$breakpoint}' not found.";
+  }
+}
+
+// Between breakpoints
+@mixin media-between($min, $max) {
+  @if map-has-key($breakpoints, $min) and map-has-key($breakpoints, $max) {
+    @media (min-width: map-get($breakpoints, $min)) and (max-width: calc(map-get($breakpoints, $max) - 1px)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint not found.";
+  }
+}
+
+// Shorthand mixins
+@mixin mobile {
+  @include media-down('md') {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include media-between('md', 'lg') {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include media-up('lg') {
+    @content;
+  }
+}
+
+// Hide/Show utilities
+@mixin hide-on-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}
+
+@mixin hide-on-desktop {
+  @include desktop {
+    display: none !important;
+  }
+}

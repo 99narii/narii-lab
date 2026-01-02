@@ -1,0 +1,196 @@
+// ===========================================
+// Color Tokens
+// Brand Color: #FF5722 (Deep Orange)
+// ===========================================
+
+// -----------------------------
+// Primary Colors (Brand)
+// -----------------------------
+$color-primary-50: #F3E5F5;
+$color-primary-100: #E1BEE7;
+$color-primary-200: #CE93D8;
+$color-primary-300: #BA68C8;
+$color-primary-400: #AB47BC;
+$color-primary-500: #9C27B0; // Main Brand Color
+$color-primary-600: #8E24AA;
+$color-primary-700: #7B1FA2;
+$color-primary-800: #6A1B9A;
+$color-primary-900: #4A148C;
+
+// -----------------------------
+// sub Colors (Brand)
+// -----------------------------
+$color-sub-50: #E8F5E9;
+$color-sub-100: #C8E6C9;
+$color-sub-200: #A5D6A7;
+$color-sub-300: #81C784;
+$color-sub-400: #66BB6A;
+$color-sub-500: #4CAF50; // Main sub Color
+$color-sub-600: #43A047;
+$color-sub-700: #388E3C;
+$color-sub-800: #2E7D32;
+$color-sub-900: #1B5E20;
+
+// -----------------------------
+// Neutral Colors (Grayscale)
+// -----------------------------
+$color-neutral-0: #ffffff;
+$color-neutral-50: #fafafa;
+$color-neutral-100: #f5f5f5;
+$color-neutral-200: #eeeeee;
+$color-neutral-300: #e0e0e0;
+$color-neutral-400: #bdbdbd;
+$color-neutral-500: #9e9e9e;
+$color-neutral-600: #757575;
+$color-neutral-700: #616161;
+$color-neutral-800: #424242;
+$color-neutral-900: #212121;
+$color-neutral-1000: #000000;
+
+// -----------------------------
+// Semantic Colors
+// -----------------------------
+$color-success: #4caf50;
+$color-warning: #ffc107;
+$color-error: #f44336;
+$color-info: #2196f3;
+
+// -----------------------------
+// Background Colors
+// -----------------------------
+$color-bg-primary: $color-neutral-0;
+$color-bg-secondary: $color-neutral-50;
+$color-bg-tertiary: $color-neutral-100;
+$color-bg-dark: $color-neutral-900;
+$color-bg-brand: $color-primary-300;
+$color-bg-brand-light: $color-primary-50;
+
+// -----------------------------
+// Text Colors
+// -----------------------------
+$color-text-primary: $color-neutral-900;
+$color-text-secondary: $color-neutral-600;
+$color-text-tertiary: $color-neutral-500;
+$color-text-inverse: $color-neutral-0;
+$color-text-brand: $color-primary-300;
+$color-text-disabled: $color-neutral-400;
+
+// -----------------------------
+// Border Colors
+// -----------------------------
+$color-border-light: $color-neutral-200;
+$color-border-default: $color-neutral-300;
+$color-border-dark: $color-neutral-400;
+$color-border-brand: $color-primary-300;
+$color-border-focus: $color-primary-400;
+
+// -----------------------------
+// Overlay Colors
+// -----------------------------
+$color-overlay-light: rgba(0, 0, 0, 0.04);
+$color-overlay-medium: rgba(0, 0, 0, 0.32);
+$color-overlay-dark: rgba(0, 0, 0, 0.64);
+
+// -----------------------------
+// CSS Custom Properties - Light Mode (Default)
+// -----------------------------
+:root {
+  // Primary (point color: primary-300 in light mode)
+  --color-primary: #{$color-primary-300};
+  --color-primary-light: #{$color-primary-100};
+  --color-primary-dark: #{$color-primary-500};
+  --color-primary-50: #{$color-primary-50};
+  --color-primary-100: #{$color-primary-100};
+  --color-primary-200: #{$color-primary-200};
+  --color-primary-300: #{$color-primary-300};
+  --color-primary-400: #{$color-primary-400};
+  --color-primary-500: #{$color-primary-500};
+  --color-primary-600: #{$color-primary-600};
+
+  // Background
+  --color-bg-primary: #{$color-neutral-0};
+  --color-bg-secondary: #{$color-neutral-50};
+  --color-bg-tertiary: #{$color-neutral-100};
+  --color-bg-dark: #{$color-neutral-900};
+  --color-bg-brand: #{$color-primary-300};
+
+  // Text
+  --color-text-primary: #{$color-neutral-900};
+  --color-text-secondary: #{$color-neutral-600};
+  --color-text-tertiary: #{$color-neutral-500};
+  --color-text-inverse: #{$color-neutral-0};
+  --color-text-brand: #{$color-primary-500};
+
+  // Border
+  --color-border-light: #{$color-neutral-200};
+  --color-border-default: #{$color-neutral-300};
+  --color-border-brand: #{$color-primary-300};
+
+  // Neutral
+  --color-neutral-0: #{$color-neutral-0};
+  --color-neutral-50: #{$color-neutral-50};
+  --color-neutral-100: #{$color-neutral-100};
+  --color-neutral-200: #{$color-neutral-200};
+  --color-neutral-300: #{$color-neutral-300};
+  --color-neutral-400: #{$color-neutral-400};
+  --color-neutral-500: #{$color-neutral-500};
+  --color-neutral-600: #{$color-neutral-600};
+  --color-neutral-700: #{$color-neutral-700};
+  --color-neutral-800: #{$color-neutral-800};
+  --color-neutral-900: #{$color-neutral-900};
+
+  // Glass
+  --color-glass-bg: rgba(255, 255, 255, 0.8);
+}
+
+// -----------------------------
+// CSS Custom Properties - Dark Mode
+// -----------------------------
+:root[data-theme='dark'] {
+  // Primary (point color: primary-200 in dark mode)
+  --color-primary: #{$color-primary-200};
+  --color-primary-light: #{$color-primary-300};
+  --color-primary-dark: #{$color-primary-100};
+  --color-primary-50: #{$color-neutral-800};
+  --color-primary-100: #{$color-primary-800};
+  --color-primary-200: #{$color-primary-200};
+  --color-primary-300: #{$color-primary-300};
+  --color-primary-400: #{$color-primary-400};
+  --color-primary-500: #{$color-primary-200};
+  --color-primary-600: #{$color-primary-300};
+
+  // Background (반전)
+  --color-bg-primary: #{$color-neutral-900};
+  --color-bg-secondary: #{$color-neutral-800};
+  --color-bg-tertiary: #{$color-neutral-700};
+  --color-bg-dark: #{$color-neutral-0};
+  --color-bg-brand: #{$color-primary-200};
+
+  // Text (반전)
+  --color-text-primary: #{$color-neutral-0};
+  --color-text-secondary: #{$color-neutral-300};
+  --color-text-tertiary: #{$color-neutral-400};
+  --color-text-inverse: #{$color-neutral-900};
+  --color-text-brand: #{$color-primary-200};
+
+  // Border (어두운 버전)
+  --color-border-light: #{$color-neutral-700};
+  --color-border-default: #{$color-neutral-600};
+  --color-border-brand: #{$color-primary-200};
+
+  // Neutral (반전)
+  --color-neutral-0: #{$color-neutral-900};
+  --color-neutral-50: #{$color-neutral-800};
+  --color-neutral-100: #{$color-neutral-700};
+  --color-neutral-200: #{$color-neutral-600};
+  --color-neutral-300: #{$color-neutral-500};
+  --color-neutral-400: #{$color-neutral-400};
+  --color-neutral-500: #{$color-neutral-300};
+  --color-neutral-600: #{$color-neutral-300};
+  --color-neutral-700: #{$color-neutral-200};
+  --color-neutral-800: #{$color-neutral-100};
+  --color-neutral-900: #{$color-neutral-0};
+
+  // Glass
+  --color-glass-bg: rgba(0, 0, 0, 0.6);
+}

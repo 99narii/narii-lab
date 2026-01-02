@@ -1,0 +1,150 @@
+// ===========================================
+// Button Styles
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+// -----------------------------
+// Button Base
+// 버튼 기본 스타일
+// -----------------------------
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-2;
+  font-family: $font-family-primary;
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  border: $border-width-default solid transparent;
+  border-radius: $border-radius-default;
+  cursor: pointer;
+  @include transition-default;
+  @include focus-visible;
+
+  // 비활성화 상태
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// -----------------------------
+// Size Variants
+// 버튼 크기 변형
+// -----------------------------
+
+// Small
+.sm {
+  padding: $spacing-2 $spacing-4;
+  font-size: $font-size-sm;
+  border-radius: $border-radius-sm;
+}
+
+// Medium (Default)
+.md {
+  padding: $spacing-3 $spacing-6;
+  font-size: $font-size-base;
+}
+
+// Large
+.lg {
+  padding: $spacing-4 $spacing-8;
+  font-size: $font-size-lg;
+  border-radius: $border-radius-md;
+}
+
+// -----------------------------
+// Style Variants
+// 버튼 스타일 변형
+// -----------------------------
+
+// Primary: 메인 CTA 버튼
+.primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+
+  &:hover {
+    background-color: var(--color-primary-400);
+    border-color: var(--color-primary-400);
+  }
+
+  &:active {
+    background-color: var(--color-primary-500);
+    border-color: var(--color-primary-500);
+  }
+}
+
+// Secondary: 보조 버튼
+.secondary {
+  background-color: var(--color-neutral-800);
+  color: var(--color-text-inverse);
+  border-color: var(--color-neutral-800);
+
+  &:hover {
+    background-color: var(--color-neutral-700);
+    border-color: var(--color-neutral-700);
+  }
+
+  &:active {
+    background-color: var(--color-neutral-900);
+    border-color: var(--color-neutral-900);
+  }
+}
+
+// Outline: 테두리만 있는 버튼
+.outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+
+  &:hover {
+    background-color: var(--color-primary-50);
+  }
+
+  &:active {
+    background-color: var(--color-primary-100);
+  }
+}
+
+// Ghost: 배경 없는 버튼
+.ghost {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border-color: transparent;
+
+  &:hover {
+    background-color: var(--color-neutral-100);
+  }
+
+  &:active {
+    background-color: var(--color-neutral-200);
+  }
+}
+
+// White: 흰색 버튼 (컬러 배경 위에서 사용)
+.white {
+  background-color: $color-neutral-0;
+  color: var(--color-primary);
+  border-color: $color-neutral-0;
+
+  &:hover {
+    background-color: $color-neutral-100;
+    border-color: $color-neutral-100;
+  }
+
+  &:active {
+    background-color: $color-neutral-200;
+    border-color: $color-neutral-200;
+  }
+}
+
+// -----------------------------
+// Full Width
+// 전체 너비 버튼
+// -----------------------------
+.fullWidth {
+  width: 100%;
+}

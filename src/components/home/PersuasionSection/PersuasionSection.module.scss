@@ -1,0 +1,147 @@
+// ===========================================
+// PersuasionSection Styles
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+// -----------------------------
+// Section Container
+// 섹션 컨테이너 - 배경색 neutral-700
+// -----------------------------
+.section {
+  @include section-padding;
+  background-color: $color-neutral-700;
+}
+
+// -----------------------------
+// Inner Container
+// 내부 컨테이너
+// -----------------------------
+.container {
+  @include container;
+}
+
+// -----------------------------
+// List
+// 설득 포인트 리스트
+// -----------------------------
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-8;
+
+  @include media-down('lg') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $spacing-6;
+  }
+}
+
+// -----------------------------
+// Item
+// 개별 설득 포인트 - 고정 크기 + 호버 애니메이션
+// -----------------------------
+.item {
+  @include card;
+  padding: $spacing-8;
+  text-align: center;
+  // 카드 크기 고정
+  min-height: 16rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  // 초기 상태 (애니메이션 전)
+  opacity: 0;
+  transform: translateY($spacing-6);
+
+  // 가시화 시 애니메이션
+  .visible & {
+    animation: fadeInUp $duration-normal $ease-out forwards;
+  }
+
+  // 호버 시 생동감 있는 애니메이션
+  &:hover {
+    transform: translateY(-$spacing-2) scale(1.02);
+
+    .iconWrap {
+      animation: bounce 0.6s ease-in-out;
+    }
+  }
+
+  @include mobile {
+    padding: $spacing-6;
+    min-height: 14rem;
+  }
+}
+
+// -----------------------------
+// Icon Wrapper
+// 아이콘 래퍼
+// -----------------------------
+.iconWrap {
+  width: $spacing-14;
+  height: $spacing-14;
+  margin-bottom: $spacing-5;
+  @include flex-center;
+  background-color: rgba($color-primary-200, 0.15);
+  border-radius: $border-radius-lg;
+  color: $color-primary-200;
+  @include transition-default;
+
+  svg {
+    width: $spacing-8;
+    height: $spacing-8;
+  }
+}
+
+// -----------------------------
+// Item Title
+// 아이템 제목
+// -----------------------------
+.itemTitle {
+  @include typography('heading-4');
+  color: var(--color-text-primary);
+  margin-bottom: $spacing-3;
+}
+
+// -----------------------------
+// Item Description
+// 아이템 설명
+// -----------------------------
+.itemDescription {
+  @include typography('body');
+  color: var(--color-text-secondary);
+  line-height: $line-height-relaxed;
+}
+
+// -----------------------------
+// Animation
+// 애니메이션 키프레임
+// -----------------------------
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 아이콘 바운스 애니메이션
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-$spacing-2);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-$spacing-1);
+  }
+}

@@ -1,0 +1,1 @@
+export { CoverAnimation } from './CoverAnimation';
