@@ -5,7 +5,7 @@
 // 설득 문구 섹션
 // ===========================================
 
-import { useRef, type ReactNode } from 'react';
+import { useRef, useState, useEffect, type ReactNode } from 'react';
 import { useLanguage } from '@/contexts';
 import { useIntersectionObserver } from '@/hooks';
 import { SectionTitle } from '@/components/common';
@@ -41,12 +41,36 @@ const icons: Record<string, ReactNode> = {
 export const PersuasionSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const { t } = useLanguage();
+  const [isMobile, setIsMobile] = useState(false);
+  const [visibleItems, setVisibleItems] = useState<number[]>([]);
+
   const isVisible = useIntersectionObserver(sectionRef, {
     threshold: 0.2,
     triggerOnce: true,
   });
 
   const { persuasion } = homeData;
+
+  // 모바일 감지
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // 모바일: 1초 간격으로 순차 페이드인
+  useEffect(() => {
+    if (isMobile) {
+      persuasion.items.forEach((_, index) => {
+        setTimeout(() => {
+          setVisibleItems(prev => [...prev, index]);
+        }, 500 + index * 1000); // 0.5초 후 시작, 1초 간격
+      });
+    }
+  }, [isMobile, persuasion.items]);
 
   return (
     <section
@@ -64,12 +88,12 @@ export const PersuasionSection = () => {
         />
 
         {/* 설득 포인트 리스트 */}
-        <ul className={`${styles.list} ${isVisible ? styles.visible : ''}`}>
+        <ul className={`${styles.list} ${!isMobile && isVisible ? styles.visible : ''}`}>
           {persuasion.items.map((item, index) => (
             <li
               key={item.id}
-              className={styles.item}
-              style={{ animationDelay: `${index * 150}ms` }}
+              className={`${styles.item} ${isMobile && visibleItems.includes(index) ? styles.mobileVisible : ''}`}
+              style={{ animationDelay: isMobile ? '0ms' : `${index * 150}ms` }}
             >
               {/* 아이콘 */}
               <div className={styles.iconWrap} aria-hidden="true">

@@ -77,6 +77,11 @@
     padding: $spacing-6;
     min-height: 14rem;
   }
+
+  // 모바일 순차 페이드인
+  &.mobileVisible {
+    animation: fadeInUp 0.6s $ease-out forwards;
+  }
 }
 
 // -----------------------------

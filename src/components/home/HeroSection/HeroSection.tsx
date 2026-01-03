@@ -33,6 +33,33 @@ export const HeroSection = () => {
   const wheelAccumulatorRef = useRef(0);
   // 타이틀 애니메이션 활성화 여부
   const [isTitleAnimating, setIsTitleAnimating] = useState(true);
+  // 모바일 여부
+  const [isMobile, setIsMobile] = useState(false);
+
+  // 모바일 감지
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // 모바일: 자동 시간차 등장 (1초 간격)
+  useEffect(() => {
+    if (isMobile && isBoardVisible) {
+      hero.services.forEach((_, index) => {
+        setTimeout(() => {
+          setVisibleCount(prev => Math.max(prev, index + 1));
+          if (index === hero.services.length - 1) {
+            setAllVisible(true);
+            setIsUnlocked(true);
+          }
+        }, 500 + index * 1000); // 0.5초 후 시작, 1초 간격
+      });
+    }
+  }, [isMobile, isBoardVisible, hero.services]);
 
   // 휠 이벤트로 순차 등장 제어 - 딜레이 추가
   const handleWheel = useCallback((e: WheelEvent) => {
@@ -71,16 +98,16 @@ export const HeroSection = () => {
     }
   }, [isUnlocked, canScroll, hero.services.length]);
 
-  // 휠 이벤트 리스너 등록
+  // 휠 이벤트 리스너 등록 (데스크탑만)
   useEffect(() => {
-    if (!isUnlocked) {
+    if (!isUnlocked && !isMobile) {
       window.addEventListener('wheel', handleWheel, { passive: false });
     }
 
     return () => {
       window.removeEventListener('wheel', handleWheel);
     };
-  }, [handleWheel, isUnlocked]);
+  }, [handleWheel, isUnlocked, isMobile]);
 
   // 보드 등장 애니메이션
   useEffect(() => {
@@ -98,8 +125,13 @@ export const HeroSection = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // 스크롤 잠금/해제
+  // 스크롤 잠금/해제 (데스크탑만)
   useEffect(() => {
+    if (isMobile) {
+      document.body.style.overflow = '';
+      return;
+    }
+
     if (isUnlocked) {
       document.body.style.overflow = '';
     } else {
@@ -109,7 +141,7 @@ export const HeroSection = () => {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isUnlocked]);
+  }, [isUnlocked, isMobile]);
 
   return (
     <section
