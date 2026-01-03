@@ -46,9 +46,10 @@ export const HeroSection = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // 모바일: 자동 시간차 등장 (1초 간격)
+  // 모바일: 자동 시간차 등장 (1초 간격) - 커버 애니메이션(3초) 후 시작
   useEffect(() => {
     if (isMobile && isBoardVisible) {
+      const coverDuration = 3000; // 커버 애니메이션 시간
       hero.services.forEach((_, index) => {
         setTimeout(() => {
           setVisibleCount(prev => Math.max(prev, index + 1));
@@ -56,7 +57,7 @@ export const HeroSection = () => {
             setAllVisible(true);
             setIsUnlocked(true);
           }
-        }, 500 + index * 1000); // 0.5초 후 시작, 1초 간격
+        }, coverDuration + 500 + index * 1000); // 커버 후 0.5초, 그 다음 1초 간격
       });
     }
   }, [isMobile, isBoardVisible, hero.services]);

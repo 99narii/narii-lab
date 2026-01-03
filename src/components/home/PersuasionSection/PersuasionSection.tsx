@@ -61,14 +61,28 @@ export const PersuasionSection = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // 모바일: 1초 간격으로 순차 페이드인
+  // 모바일: 1초 간격으로 순차 페이드인 - 스크롤 시 자동 시작
   useEffect(() => {
     if (isMobile) {
-      persuasion.items.forEach((_, index) => {
-        setTimeout(() => {
-          setVisibleItems(prev => [...prev, index]);
-        }, 500 + index * 1000); // 0.5초 후 시작, 1초 간격
-      });
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            persuasion.items.forEach((_, index) => {
+              setTimeout(() => {
+                setVisibleItems(prev => [...prev, index]);
+              }, 300 + index * 800); // 0.3초 후 시작, 0.8초 간격
+            });
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.1 }
+      );
+
+      if (sectionRef.current) {
+        observer.observe(sectionRef.current);
+      }
+
+      return () => observer.disconnect();
     }
   }, [isMobile, persuasion.items]);
 
