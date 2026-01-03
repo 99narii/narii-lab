@@ -7,6 +7,7 @@
 
 import type { ReactNode } from 'react';
 import { ThemeProvider, LanguageProvider } from '@/contexts';
+import { MobileFloatingButtons } from '../MobileFloatingButtons';
 
 // -----------------------------
 // Types
@@ -23,6 +24,7 @@ export const Providers = ({ children }: ProvidersProps) => {
     <ThemeProvider>
       <LanguageProvider>
         {children}
+        <MobileFloatingButtons />
       </LanguageProvider>
     </ThemeProvider>
   );

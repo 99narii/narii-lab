@@ -1,0 +1,286 @@
+// ===========================================
+// PortfolioModal Styles
+// 전체 화면 포트폴리오 모달
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+// -----------------------------
+// Overlay
+// 배경 오버레이 (블러 효과)
+// -----------------------------
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 0.3s $ease-out;
+}
+
+// -----------------------------
+// Modal Container
+// 모달 컨테이너
+// -----------------------------
+.modal {
+  width: 100%;
+  max-width: 900px;
+  height: 100vh;
+  background-color: var(--color-bg-primary);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  animation: slideUp 0.3s $ease-out;
+
+  @include mobile {
+    max-width: 100%;
+  }
+}
+
+// -----------------------------
+// Close Button
+// 닫기 버튼
+// -----------------------------
+.closeButton {
+  position: absolute;
+  top: $spacing-4;
+  right: $spacing-4;
+  z-index: 10;
+  width: $spacing-12;
+  height: $spacing-12;
+  @include flex-center;
+  background-color: var(--color-bg-secondary);
+  border-radius: $border-radius-full;
+  color: var(--color-text-primary);
+  @include transition-default;
+
+  &:hover {
+    background-color: var(--color-primary);
+    color: $color-neutral-0;
+  }
+
+  @include mobile {
+    top: $spacing-3;
+    right: $spacing-3;
+    width: $spacing-10;
+    height: $spacing-10;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+// -----------------------------
+// Header (Sticky)
+// 고정 헤더
+// -----------------------------
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background-color: var(--color-bg-primary);
+  border-bottom: $border-width-thin solid var(--color-border-light);
+  padding: $spacing-8 $spacing-8 $spacing-6;
+  flex-shrink: 0;
+
+  @include mobile {
+    padding: $spacing-6 $spacing-4 $spacing-4;
+  }
+}
+
+.headerContent {
+  max-width: 100%;
+}
+
+// -----------------------------
+// Category
+// 카테고리
+// -----------------------------
+.category {
+  display: inline-block;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wide;
+  margin-bottom: $spacing-2;
+}
+
+// -----------------------------
+// Title
+// 타이틀
+// -----------------------------
+.title {
+  @include typography('heading-2');
+  color: var(--color-text-primary);
+  margin-bottom: $spacing-3;
+  padding-right: $spacing-12; // 닫기 버튼 공간
+
+  @include mobile {
+    font-size: $font-size-xl;
+    padding-right: $spacing-10;
+  }
+}
+
+// -----------------------------
+// Description
+// 설명
+// -----------------------------
+.description {
+  @include typography('body');
+  color: var(--color-text-secondary);
+  line-height: $line-height-relaxed;
+  margin-bottom: $spacing-4;
+}
+
+// -----------------------------
+// Meta
+// 메타 정보
+// -----------------------------
+.meta {
+  display: flex;
+  gap: $spacing-6;
+  margin-bottom: $spacing-4;
+  font-size: $font-size-sm;
+  color: var(--color-text-secondary);
+
+  @include mobile {
+    flex-direction: column;
+    gap: $spacing-1;
+  }
+}
+
+.metaItem {
+  strong {
+    color: var(--color-text-tertiary);
+    font-weight: $font-weight-medium;
+  }
+}
+
+// -----------------------------
+// Tags
+// 태그
+// -----------------------------
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-2;
+  margin-bottom: $spacing-4;
+}
+
+.tag {
+  display: inline-block;
+  padding: $spacing-1 $spacing-3;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: var(--color-primary);
+  background-color: var(--color-primary-100);
+  border-radius: $border-radius-full;
+}
+
+// -----------------------------
+// Links
+// 링크 버튼
+// -----------------------------
+.links {
+  display: flex;
+  gap: $spacing-3;
+}
+
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-2;
+  padding: $spacing-2 $spacing-4;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-secondary);
+  border-radius: $border-radius-default;
+  @include transition-default;
+
+  &:hover {
+    background-color: var(--color-primary);
+    color: $color-neutral-0;
+  }
+}
+
+// -----------------------------
+// Image Container (Scrollable)
+// 스크롤 가능한 이미지 영역
+// -----------------------------
+.imageContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-6 $spacing-8;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+
+  @include mobile {
+    padding: $spacing-4;
+    gap: $spacing-4;
+  }
+}
+
+// -----------------------------
+// Image Wrap
+// 이미지 래퍼
+// -----------------------------
+.imageWrap {
+  width: 100%;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  background-color: var(--color-neutral-200);
+}
+
+.imagePlaceholder {
+  @include aspect-ratio(16, 10);
+  @include flex-center;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-100) 0%,
+    var(--color-primary-200) 100%
+  );
+}
+
+.placeholderText {
+  font-family: $font-family-display;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-primary);
+  opacity: 0.5;
+
+  @include mobile {
+    font-size: $font-size-lg;
+  }
+}
+
+// -----------------------------
+// Animations
+// 애니메이션
+// -----------------------------
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

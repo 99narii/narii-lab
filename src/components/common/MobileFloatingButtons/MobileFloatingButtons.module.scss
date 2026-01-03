@@ -1,0 +1,110 @@
+// ===========================================
+// MobileFloatingButtons Styles
+// 모바일 플로팅 버튼
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+// -----------------------------
+// Container
+// 컨테이너 - 모바일에서만 표시
+// -----------------------------
+.container {
+  display: none;
+
+  @include mobile {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: $spacing-2;
+    position: fixed;
+    bottom: $spacing-6;
+    right: $spacing-4;
+    z-index: 1000;
+  }
+}
+
+// -----------------------------
+// Main Toggle Button
+// 메인 토글 버튼
+// -----------------------------
+.mainButton {
+  width: $spacing-14;
+  height: $spacing-14;
+  @include flex-center;
+  background-color: var(--color-primary);
+  color: $color-neutral-0;
+  border-radius: $border-radius-full;
+  box-shadow: $shadow-lg;
+  @include transition-default;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  }
+
+  &.active {
+    background-color: var(--color-neutral-800);
+
+    .menuIcon {
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.menuIcon {
+  @include transition-default;
+}
+
+// -----------------------------
+// Buttons Container
+// 버튼 컨테이너
+// -----------------------------
+.buttons {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: $spacing-2;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY($spacing-4);
+  @include transition-default;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+// -----------------------------
+// Individual Button
+// 개별 버튼
+// -----------------------------
+.button {
+  width: $spacing-12;
+  height: $spacing-12;
+  @include flex-center;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border: $border-width-thin solid var(--color-border-default);
+  border-radius: $border-radius-full;
+  box-shadow: $shadow-md;
+  @include transition-default;
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-primary);
+    color: $color-neutral-0;
+    border-color: var(--color-primary);
+  }
+}
+
+// -----------------------------
+// Language Text
+// 언어 텍스트
+// -----------------------------
+.langText {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  letter-spacing: $letter-spacing-tight;
+}

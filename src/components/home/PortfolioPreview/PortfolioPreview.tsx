@@ -5,13 +5,13 @@
 // 포트폴리오 미리보기 섹션 (3x2 그리드)
 // ===========================================
 
-import { useRef } from 'react';
-import Link from 'next/link';
+import { useRef, useState } from 'react';
 import { useLanguage } from '@/contexts';
 import { useIntersectionObserver } from '@/hooks';
-import { SectionTitle, Button } from '@/components/common';
+import { SectionTitle, Button, PortfolioModal } from '@/components/common';
 import { homeData } from '@/data/home';
 import { portfolioData, portfolioCategories } from '@/data/portfolio';
+import type { PortfolioItem } from '@/types';
 import styles from './PortfolioPreview.module.scss';
 
 // -----------------------------
@@ -20,6 +20,7 @@ import styles from './PortfolioPreview.module.scss';
 export const PortfolioPreview = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const { t, language } = useLanguage();
+  const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
   const isVisible = useIntersectionObserver(sectionRef, {
     threshold: 0.1,
     triggerOnce: true,
@@ -61,9 +62,12 @@ export const PortfolioPreview = () => {
               className={styles.item}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <Link
-                href={`/portfolio#${item.id}`}
+              <article
                 className={styles.card}
+                onClick={() => setSelectedItem(item)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && setSelectedItem(item)}
                 aria-label={`${t(item.title)} ${language === 'ko' ? '프로젝트 상세 보기' : 'View project details'}`}
               >
                 {/* 썸네일 이미지 */}
@@ -87,7 +91,7 @@ export const PortfolioPreview = () => {
                   <h3 className={styles.title}>{t(item.title)}</h3>
                   <p className={styles.client}>{item.client}</p>
                 </div>
-              </Link>
+              </article>
             </li>
           ))}
         </ul>
@@ -103,6 +107,13 @@ export const PortfolioPreview = () => {
           </Button>
         </div>
       </div>
+
+      {/* 포트폴리오 상세 모달 */}
+      <PortfolioModal
+        item={selectedItem}
+        onClose={() => setSelectedItem(null)}
+        getCategoryLabel={getCategoryLabel}
+      />
     </section>
   );
 };

@@ -10,3 +10,5 @@ export { Button } from './Button';
 export { SectionTitle } from './SectionTitle';
 export { Providers } from './Providers';
 export { Modal } from './Modal';
+export { PortfolioModal } from './PortfolioModal';
+export { MobileFloatingButtons } from './MobileFloatingButtons';

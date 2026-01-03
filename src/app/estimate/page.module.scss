@@ -48,6 +48,7 @@
   @include media-down('lg') {
     grid-template-columns: 1fr;
     gap: $spacing-6;
+    padding-bottom: 12rem; // 모바일에서 하단 고정 카드 공간 확보
   }
 }
 
@@ -165,13 +166,29 @@
   top: calc($spacing-16 + $spacing-4);
 
   @include media-down('lg') {
-    position: static;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    z-index: 100;
+    padding: $spacing-4;
+    background-color: var(--color-bg-primary);
+    border-top: $border-width-thin solid var(--color-border-light);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
   }
 }
 
 .summaryCard {
   @include card;
   padding: $spacing-6;
+
+  @include media-down('lg') {
+    padding: $spacing-4;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
 }
 
 // -----------------------------
@@ -182,6 +199,12 @@
   margin-bottom: $spacing-6;
   padding-bottom: $spacing-6;
   border-bottom: $border-width-thin solid var(--color-border-light);
+
+  @include media-down('lg') {
+    margin-bottom: $spacing-3;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
 }
 
 // -----------------------------
@@ -195,8 +218,26 @@
   line-height: $line-height-relaxed;
   color: var(--color-text-primary);
 
-  @include mobile {
-    font-size: $font-size-base;
+  @include media-down('lg') {
+    font-size: $font-size-sm;
+    line-height: $line-height-normal;
+  }
+}
+
+// 데스크탑/모바일 전용 표시
+.desktopOnly {
+  display: inline;
+
+  @include media-down('lg') {
+    display: none;
+  }
+}
+
+.mobileOnly {
+  display: none;
+
+  @include media-down('lg') {
+    display: inline;
   }
 }
 

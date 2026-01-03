@@ -147,34 +147,54 @@ const DynamicText = ({ selections, t, language }: DynamicTextProps) => {
   if (language === 'ko') {
     return (
       <div className={styles.dynamicText}>
-        <span className={fieldLabel ? styles.filled : styles.placeholder}>
-          {fieldLabel ? t(fieldLabel) : t(dynamicText.placeholders.field)}
+        {/* 데스크탑 버전 */}
+        <span className={styles.desktopOnly}>
+          <span className={fieldLabel ? styles.filled : styles.placeholder}>
+            {fieldLabel ? t(fieldLabel) : t(dynamicText.placeholders.field)}
+          </span>
+          <br />
+          <span className={platformLabel ? styles.filled : styles.placeholder}>
+            {platformLabel ? t(platformLabel) : t(dynamicText.placeholders.platform)}
+          </span>
+          <span className={styles.connector}>의 </span>
+          <span className={typeLabel ? styles.filled : styles.placeholder}>
+            {typeLabel ? t(typeLabel) : t(dynamicText.placeholders.type)}
+          </span>
+          <span className={styles.connector}> 프로젝트를</span>
+          <br />
+          <span className={styles.connector}>의뢰하고 싶어요.</span>
+          <br />
+          <span className={budgetLabel ? styles.filled : styles.placeholder}>
+            {budgetLabel ? t(budgetLabel) : t(dynamicText.placeholders.budget)}
+          </span>
+          <span className={styles.connector}> 규모, </span>
+          <span className={durationLabel ? styles.filled : styles.placeholder}>
+            {durationLabel ? t(durationLabel) : t(dynamicText.placeholders.duration)}
+          </span>
+          <span className={styles.connector}> 진행 예정</span>
         </span>
-        <br />
-        <span className={platformLabel ? styles.filled : styles.placeholder}>
-          {platformLabel ? t(platformLabel) : t(dynamicText.placeholders.platform)}
+        {/* 모바일 버전 - 컴팩트 */}
+        <span className={styles.mobileOnly}>
+          <span className={fieldLabel ? styles.filled : styles.placeholder}>
+            {fieldLabel ? t(fieldLabel) : t(dynamicText.placeholders.field)}
+          </span>
+          <span className={styles.connector}> </span>
+          <span className={platformLabel ? styles.filled : styles.placeholder}>
+            {platformLabel ? t(platformLabel) : t(dynamicText.placeholders.platform)}
+          </span>
+          <span className={styles.connector}> </span>
+          <span className={typeLabel ? styles.filled : styles.placeholder}>
+            {typeLabel ? t(typeLabel) : t(dynamicText.placeholders.type)}
+          </span>
+          <span className={styles.connector}> / </span>
+          <span className={budgetLabel ? styles.filled : styles.placeholder}>
+            {budgetLabel ? t(budgetLabel) : t(dynamicText.placeholders.budget)}
+          </span>
+          <span className={styles.connector}> / </span>
+          <span className={durationLabel ? styles.filled : styles.placeholder}>
+            {durationLabel ? t(durationLabel) : t(dynamicText.placeholders.duration)}
+          </span>
         </span>
-        <span className={styles.connector}>의</span>
-        <br />
-        <span className={typeLabel ? styles.filled : styles.placeholder}>
-          {typeLabel ? t(typeLabel) : t(dynamicText.placeholders.type)}
-        </span>
-        <span className={styles.connector}> 프로젝트를</span>
-        <br />
-        <span className={styles.connector}>의뢰하고 싶어요.</span>
-        <br />
-        <br />
-        <span className={budgetLabel ? styles.filled : styles.placeholder}>
-          {budgetLabel ? t(budgetLabel) : t(dynamicText.placeholders.budget)}
-        </span>
-        <span className={styles.connector}>의 규모로</span>
-        <br />
-        <span className={durationLabel ? styles.filled : styles.placeholder}>
-          {durationLabel ? t(durationLabel) : t(dynamicText.placeholders.duration)}
-        </span>
-        <span className={styles.connector}> 동안 진행할</span>
-        <br />
-        <span className={styles.connector}>예정입니다.</span>
       </div>
     );
   }
@@ -182,38 +202,50 @@ const DynamicText = ({ selections, t, language }: DynamicTextProps) => {
   // English version
   return (
     <div className={styles.dynamicText}>
-      <span className={styles.connector}>I want to request</span>
-      <br />
-      <span className={styles.connector}>a </span>
-      <span className={typeLabel ? styles.filled : styles.placeholder}>
-        {typeLabel ? t(typeLabel) : t(dynamicText.placeholders.type)}
+      {/* 데스크탑 버전 */}
+      <span className={styles.desktopOnly}>
+        <span className={typeLabel ? styles.filled : styles.placeholder}>
+          {typeLabel ? t(typeLabel) : t(dynamicText.placeholders.type)}
+        </span>
+        <span className={styles.connector}> project for </span>
+        <span className={fieldLabel ? styles.filled : styles.placeholder}>
+          {fieldLabel ? t(fieldLabel) : t(dynamicText.placeholders.field)}
+        </span>
+        <br />
+        <span className={platformLabel ? styles.filled : styles.placeholder}>
+          {platformLabel ? t(platformLabel) : t(dynamicText.placeholders.platform)}
+        </span>
+        <span className={styles.connector}> / </span>
+        <span className={budgetLabel ? styles.filled : styles.placeholder}>
+          {budgetLabel ? t(budgetLabel) : t(dynamicText.placeholders.budget)}
+        </span>
+        <span className={styles.connector}> / </span>
+        <span className={durationLabel ? styles.filled : styles.placeholder}>
+          {durationLabel ? t(durationLabel) : t(dynamicText.placeholders.duration)}
+        </span>
       </span>
-      <span className={styles.connector}> project</span>
-      <br />
-      <span className={styles.connector}>for </span>
-      <span className={fieldLabel ? styles.filled : styles.placeholder}>
-        {fieldLabel ? t(fieldLabel) : t(dynamicText.placeholders.field)}
+      {/* 모바일 버전 - 컴팩트 */}
+      <span className={styles.mobileOnly}>
+        <span className={fieldLabel ? styles.filled : styles.placeholder}>
+          {fieldLabel ? t(fieldLabel) : t(dynamicText.placeholders.field)}
+        </span>
+        <span className={styles.connector}> </span>
+        <span className={platformLabel ? styles.filled : styles.placeholder}>
+          {platformLabel ? t(platformLabel) : t(dynamicText.placeholders.platform)}
+        </span>
+        <span className={styles.connector}> </span>
+        <span className={typeLabel ? styles.filled : styles.placeholder}>
+          {typeLabel ? t(typeLabel) : t(dynamicText.placeholders.type)}
+        </span>
+        <span className={styles.connector}> / </span>
+        <span className={budgetLabel ? styles.filled : styles.placeholder}>
+          {budgetLabel ? t(budgetLabel) : t(dynamicText.placeholders.budget)}
+        </span>
+        <span className={styles.connector}> / </span>
+        <span className={durationLabel ? styles.filled : styles.placeholder}>
+          {durationLabel ? t(durationLabel) : t(dynamicText.placeholders.duration)}
+        </span>
       </span>
-      <br />
-      <span className={platformLabel ? styles.filled : styles.placeholder}>
-        {platformLabel ? t(platformLabel) : t(dynamicText.placeholders.platform)}
-      </span>
-      <span className={styles.connector}>.</span>
-      <br />
-      <br />
-      <span className={styles.connector}>With a budget of </span>
-      <span className={budgetLabel ? styles.filled : styles.placeholder}>
-        {budgetLabel ? t(budgetLabel) : t(dynamicText.placeholders.budget)}
-      </span>
-      <span className={styles.connector}>,</span>
-      <br />
-      <span className={styles.connector}>planning to proceed</span>
-      <br />
-      <span className={styles.connector}>for </span>
-      <span className={durationLabel ? styles.filled : styles.placeholder}>
-        {durationLabel ? t(durationLabel) : t(dynamicText.placeholders.duration)}
-      </span>
-      <span className={styles.connector}>.</span>
     </div>
   );
 };
@@ -373,20 +405,18 @@ export default function EstimatePage() {
                   <DynamicText selections={selections} t={t} language={language} />
                 </div>
 
-                {/* 예상 견적 */}
-                <div className={styles.estimateResult}>
-                  <h3 className={styles.resultTitle}>{t(result.title)}</h3>
-                  {estimate ? (
+                {/* 예상 견적 - 확인 버튼 클릭 후에만 표시 */}
+                {isChecked && estimate && (
+                  <div className={styles.estimateResult}>
+                    <h3 className={styles.resultTitle}>{t(result.title)}</h3>
                     <div className={styles.priceBox}>
                       <span className={styles.priceValue}>
                         {formatPrice(estimate.min, language)} ~ {formatPrice(estimate.max, language)}
                       </span>
                     </div>
-                  ) : (
-                    <p className={styles.resultPlaceholder}>{t(result.calculating)}</p>
-                  )}
-                  <p className={styles.disclaimer}>{t(result.disclaimer)}</p>
-                </div>
+                    <p className={styles.disclaimer}>{t(result.disclaimer)}</p>
+                  </div>
+                )}
 
                 {/* 버튼 */}
                 <div className={styles.buttonGroup}>

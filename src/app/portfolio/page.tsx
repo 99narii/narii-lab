@@ -6,7 +6,7 @@
 // ===========================================
 
 import { useState } from 'react';
-import { Header, Footer, SectionTitle, Modal } from '@/components/common';
+import { Header, Footer, SectionTitle, PortfolioModal } from '@/components/common';
 import { useLanguage } from '@/contexts';
 import { portfolioData, portfolioPageData, portfolioCategories } from '@/data/portfolio';
 import type { PortfolioItem } from '@/types';
@@ -96,61 +96,11 @@ export default function PortfolioPage() {
       <Footer />
 
       {/* 포트폴리오 상세 모달 */}
-      <Modal
-        isOpen={!!selectedItem}
+      <PortfolioModal
+        item={selectedItem}
         onClose={() => setSelectedItem(null)}
-        size="lg"
-      >
-        {selectedItem && (
-          <div className={styles.modalContent}>
-            {/* 모달 썸네일 */}
-            <div className={styles.modalImageWrap}>
-              <div
-                className={styles.modalImagePlaceholder}
-                aria-label={selectedItem.thumbnailAlt}
-              >
-                <span className={styles.modalPlaceholderText}>
-                  {selectedItem.client}
-                </span>
-              </div>
-            </div>
-
-            {/* 모달 정보 */}
-            <div className={styles.modalInfo}>
-              <span className={styles.modalCategory}>
-                {getCategoryLabel(selectedItem.category)}
-              </span>
-              <h2 className={styles.modalTitle}>{t(selectedItem.title)}</h2>
-              <p className={styles.modalDescription}>{t(selectedItem.description)}</p>
-
-              {/* 프로젝트 정보 */}
-              <div className={styles.modalMeta}>
-                <div className={styles.metaItem}>
-                  <span className={styles.metaLabel}>
-                    {language === 'ko' ? '클라이언트' : 'Client'}
-                  </span>
-                  <span className={styles.metaValue}>{selectedItem.client}</span>
-                </div>
-                <div className={styles.metaItem}>
-                  <span className={styles.metaLabel}>
-                    {language === 'ko' ? '연도' : 'Year'}
-                  </span>
-                  <span className={styles.metaValue}>{selectedItem.year}</span>
-                </div>
-              </div>
-
-              {/* 태그 */}
-              <div className={styles.modalTags}>
-                {selectedItem.tags.map((tag) => (
-                  <span key={tag} className={styles.modalTag}>
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-      </Modal>
+        getCategoryLabel={getCategoryLabel}
+      />
     </>
   );
 }
