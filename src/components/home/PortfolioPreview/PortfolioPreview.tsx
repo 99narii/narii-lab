@@ -150,7 +150,6 @@ export const PortfolioPreview = () => {
                   <div className={styles.info}>
                     <span className={styles.category}>{item.category}</span>
                     <h3 className={styles.title}>{item.title}</h3>
-                    {item.client && <p className={styles.client}>{item.client}</p>}
 
                     {/* 기술스택 칩 */}
                     {item.techStacks.length > 0 && (

@@ -45,6 +45,10 @@
 // 그리드 아이템
 // -----------------------------
 .item {
+  // 그리드 셀 전체 채우기
+  width: 100%;
+  min-width: 0;
+
   // 초기 상태 (애니메이션 전)
   opacity: 0;
   transform: translateY($spacing-6);
@@ -61,6 +65,7 @@
 // -----------------------------
 .card {
   display: block;
+  width: 100%;
   text-decoration: none;
   border-radius: $border-radius-lg;
   overflow: hidden;
