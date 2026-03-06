@@ -137,7 +137,7 @@ export const homeData = {
     },
     titleAriaLabel: '프로젝트 문의하기',
     description: {
-      ko: '아이디어가 있으시다면 편하게 연락주세요.\n함께 멋진 결과물을 만들어 드리겠습니다.',
+      ko: '아이디어가 있으시다면 편하게 연락주세요.\n함께 좋은 결과물을 만들겠습니다.',
       en: "If you have an idea, feel free to contact us.\nWe'll create amazing results together.",
     },
     cta: {
@@ -149,7 +149,7 @@ export const homeData = {
       ariaLabel: '연락하기 페이지로 이동하여 문의하기',
     } as CTAButton,
     email: {
-      address: 'hello@nariilab.com',
+      address: '99studio99@naver.com',
       ariaLabel: 'narii lab 이메일 주소',
     },
   },

@@ -86,13 +86,49 @@
 }
 
 // -----------------------------
+// Loading & Empty States
+// 로딩 및 빈 상태
+// -----------------------------
+.loading,
+.empty {
+  @include flex-center;
+  min-height: 400px;
+  color: var(--color-text-tertiary);
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--color-border-primary);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// -----------------------------
 // Image Wrapper
 // 이미지 래퍼
 // -----------------------------
 .imageWrap {
+  position: relative;
   @include aspect-ratio(16, 10);
   overflow: hidden;
   background-color: var(--color-neutral-200);
+}
+
+.image {
+  object-fit: cover;
+  @include transition-default;
+
+  .card:hover & {
+    transform: scale(1.05);
+  }
 }
 
 // -----------------------------

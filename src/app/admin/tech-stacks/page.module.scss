@@ -1,0 +1,232 @@
+// ===========================================
+// Admin Tech Stacks Page Styles
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+.page {
+  padding: $spacing-6;
+  max-width: 800px;
+}
+
+// -----------------------------
+// Loading / Error / Empty
+// -----------------------------
+.loading,
+.error,
+.empty {
+  @include flex-center;
+  flex-direction: column;
+  gap: $spacing-4;
+  padding: $spacing-16;
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.error button {
+  padding: $spacing-2 $spacing-4;
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  border: none;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+}
+
+// -----------------------------
+// Header
+// -----------------------------
+.header {
+  margin-bottom: $spacing-6;
+}
+
+.title {
+  @include typography('heading-2');
+  color: var(--color-text-primary);
+}
+
+.subtitle {
+  @include typography('body-sm');
+  color: var(--color-text-secondary);
+  margin-top: $spacing-1;
+}
+
+// -----------------------------
+// Add Form
+// -----------------------------
+.addForm {
+  padding: $spacing-5;
+  background-color: var(--color-bg-primary);
+  border: $border-width-default solid var(--color-border-primary);
+  border-radius: $border-radius-lg;
+  margin-bottom: $spacing-6;
+}
+
+.addFormRow {
+  display: flex;
+  gap: $spacing-3;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.input {
+  flex: 1;
+  padding: $spacing-3 $spacing-4;
+  font-size: $font-size-base;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  border: $border-width-default solid var(--color-border-primary);
+  border-radius: $border-radius-md;
+  @include transition-default;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-100);
+  }
+}
+
+.addButton {
+  padding: $spacing-3 $spacing-6;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-inverse);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  white-space: nowrap;
+  @include transition-default;
+
+  &:hover {
+    background-color: var(--color-primary-400);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// -----------------------------
+// List
+// -----------------------------
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-4;
+  background-color: var(--color-bg-primary);
+  border: $border-width-default solid var(--color-border-primary);
+  border-radius: $border-radius-md;
+  @include transition-default;
+
+  &:hover {
+    border-color: var(--color-primary-200);
+  }
+}
+
+.itemName {
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-primary);
+}
+
+.itemActions {
+  display: flex;
+  gap: $spacing-2;
+}
+
+.editButton,
+.deleteButton,
+.saveButton,
+.cancelButton {
+  padding: $spacing-2 $spacing-3;
+  font-size: $font-size-sm;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  @include transition-default;
+}
+
+.editButton {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  border: $border-width-default solid var(--color-border-primary);
+
+  &:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+}
+
+.deleteButton {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border: none;
+
+  &:hover {
+    color: rgb(239, 68, 68);
+  }
+}
+
+.saveButton {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  border: none;
+
+  &:hover {
+    background-color: var(--color-primary-400);
+  }
+}
+
+.cancelButton {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border: $border-width-default solid var(--color-border-primary);
+
+  &:hover {
+    background-color: var(--color-bg-secondary);
+  }
+}
+
+// -----------------------------
+// Edit Mode
+// -----------------------------
+.editMode {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  width: 100%;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.editInput {
+  flex: 1;
+  padding: $spacing-2 $spacing-3;
+  font-size: $font-size-base;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  border: $border-width-default solid var(--color-primary);
+  border-radius: $border-radius-md;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--color-primary-100);
+  }
+}
+
+.editActions {
+  display: flex;
+  gap: $spacing-2;
+}

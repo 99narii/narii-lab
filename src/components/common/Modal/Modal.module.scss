@@ -18,9 +18,9 @@
   padding: $spacing-4;
 
   // 블러 배경 - 라이트/다크 모드 지원
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 
   // 다크모드에서 더 어두운 배경
   :root[data-theme='dark'] & {

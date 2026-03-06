@@ -1,0 +1,113 @@
+// ===========================================
+// Admin Login Page Styles
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+.page {
+  min-height: 100vh;
+  @include flex-center;
+  background-color: var(--color-bg-secondary);
+  padding: $spacing-4;
+}
+
+.loading {
+  color: var(--color-text-secondary);
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  padding: $spacing-8;
+  background-color: var(--color-bg-primary);
+  border: $border-width-default solid var(--color-border-primary);
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-lg;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $spacing-8;
+}
+
+.title {
+  font-family: $font-family-display;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-primary);
+  margin-bottom: $spacing-2;
+}
+
+.subtitle {
+  font-size: $font-size-sm;
+  color: var(--color-text-secondary);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-5;
+}
+
+.error {
+  padding: $spacing-3 $spacing-4;
+  background-color: rgba(239, 68, 68, 0.1);
+  border: $border-width-default solid rgba(239, 68, 68, 0.3);
+  border-radius: $border-radius-md;
+  color: rgb(239, 68, 68);
+  font-size: $font-size-sm;
+  text-align: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-primary);
+}
+
+.input {
+  padding: $spacing-3 $spacing-4;
+  font-size: $font-size-base;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  border: $border-width-default solid var(--color-border-primary);
+  border-radius: $border-radius-md;
+  @include transition-default;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-100);
+  }
+
+  &::placeholder {
+    color: var(--color-text-tertiary);
+  }
+}
+
+.button {
+  padding: $spacing-3 $spacing-4;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: var(--color-text-inverse);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  @include transition-default;
+
+  &:hover {
+    background-color: var(--color-primary-400);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

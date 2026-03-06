@@ -21,7 +21,7 @@ export const contactData = {
     },
     email: {
       label: 'Email',
-      value: 'hello@nariilab.com',
+      value: '99studio99@naver.com',
     },
     response: {
       label: 'Response Time',

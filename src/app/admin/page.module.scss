@@ -1,0 +1,69 @@
+// ===========================================
+// Admin Dashboard Styles
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+.dashboard {
+  padding: $spacing-6;
+}
+
+.title {
+  @include typography('heading-2');
+  color: var(--color-text-primary);
+  margin-bottom: $spacing-2;
+}
+
+.subtitle {
+  @include typography('body');
+  color: var(--color-text-secondary);
+  margin-bottom: $spacing-8;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $spacing-6;
+}
+
+.card {
+  display: block;
+  padding: $spacing-6;
+  background-color: var(--color-bg-primary);
+  border: $border-width-default solid var(--color-border-primary);
+  border-radius: $border-radius-lg;
+  text-decoration: none;
+  @include transition-default;
+
+  &:hover {
+    border-color: var(--color-primary);
+    box-shadow: $shadow-md;
+    transform: translateY(-$spacing-1);
+  }
+}
+
+.cardIcon {
+  width: $spacing-12;
+  height: $spacing-12;
+  @include flex-center;
+  background-color: var(--color-primary-100);
+  border-radius: $border-radius-md;
+  margin-bottom: $spacing-4;
+
+  svg {
+    width: $spacing-6;
+    height: $spacing-6;
+    color: var(--color-primary);
+  }
+}
+
+.cardTitle {
+  @include typography('heading-4');
+  color: var(--color-text-primary);
+  margin-bottom: $spacing-2;
+}
+
+.cardDescription {
+  @include typography('body-sm');
+  color: var(--color-text-secondary);
+}

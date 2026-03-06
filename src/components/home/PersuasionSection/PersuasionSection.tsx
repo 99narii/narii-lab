@@ -114,15 +114,17 @@ export const PersuasionSection = () => {
                 {icons[item.icon]}
               </div>
               {/* 텍스트 */}
-              <h3 className={styles.itemTitle}>{t(item.title)}</h3>
-              <p className={styles.itemDescription}>
-                {t(item.description).split('\n').map((line: string, i: number) => (
-                  <span key={i}>
-                    {line}
-                    {i < t(item.description).split('\n').length - 1 && <br />}
-                  </span>
-                ))}
-              </p>
+              <div className={styles.textWrap}>
+                <h3 className={styles.itemTitle}>{t(item.title)}</h3>
+                <p className={styles.itemDescription}>
+                  {t(item.description).split('\n').map((line: string, i: number) => (
+                    <span key={i}>
+                      {line}
+                      {i < t(item.description).split('\n').length - 1 && <br />}
+                    </span>
+                  ))}
+                </p>
+              </div>
             </li>
           ))}
         </ul>

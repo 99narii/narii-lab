@@ -67,11 +67,11 @@ export const Footer = () => {
             <ul className={styles.contactList}>
               <li>
                 <a
-                  href="mailto:hello@nariilab.com"
+                  href="mailto:99studio99@naver.com"
                   className={styles.contactLink}
                   aria-label="이메일로 연락하기"
                 >
-                  hello@nariilab.com
+                  99studio99@naver.com
                 </a>
               </li>
             </ul>

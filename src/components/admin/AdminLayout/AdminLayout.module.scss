@@ -1,0 +1,229 @@
+// ===========================================
+// AdminLayout Styles
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+// -----------------------------
+// Loading Page
+// -----------------------------
+.loadingPage {
+  min-height: 100vh;
+  @include flex-center;
+  background-color: var(--color-bg-secondary);
+}
+
+.spinner {
+  width: $spacing-10;
+  height: $spacing-10;
+  border: 3px solid var(--color-border-primary);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// -----------------------------
+// Layout Container
+// -----------------------------
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--color-bg-secondary);
+}
+
+// -----------------------------
+// Sidebar
+// -----------------------------
+.sidebar {
+  width: 260px;
+  background-color: var(--color-bg-primary);
+  border-right: $border-width-default solid var(--color-border-primary);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+
+  @include mobile {
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: $border-width-default solid var(--color-border-primary);
+  }
+}
+
+// -----------------------------
+// Logo
+// -----------------------------
+.logo {
+  padding: $spacing-6;
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  border-bottom: $border-width-default solid var(--color-border-primary);
+
+  a {
+    font-family: $font-family-display;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: var(--color-text-primary);
+    text-decoration: none;
+  }
+}
+
+.badge {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: var(--color-primary);
+  background-color: var(--color-primary-100);
+  padding: $spacing-1 $spacing-2;
+  border-radius: $border-radius-sm;
+}
+
+// -----------------------------
+// Navigation
+// -----------------------------
+.nav {
+  flex: 1;
+  padding: $spacing-4;
+  overflow-y: auto;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  padding: $spacing-3 $spacing-4;
+  border-radius: $border-radius-md;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  @include transition-default;
+
+  &:hover {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+  }
+
+  &.active {
+    background-color: var(--color-primary-100);
+    color: var(--color-primary);
+
+    .navIcon {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.navIcon {
+  width: $spacing-5;
+  height: $spacing-5;
+  flex-shrink: 0;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.navLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+}
+
+// -----------------------------
+// Footer
+// -----------------------------
+.footer {
+  padding: $spacing-4;
+  border-top: $border-width-default solid var(--color-border-primary);
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+.userInfo {
+  padding: $spacing-2 $spacing-4;
+  margin-bottom: $spacing-1;
+}
+
+.userEmail {
+  font-size: $font-size-xs;
+  color: var(--color-text-tertiary);
+  @include text-truncate;
+  display: block;
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  width: 100%;
+  padding: $spacing-3 $spacing-4;
+  border-radius: $border-radius-md;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: $font-size-sm;
+  cursor: pointer;
+  @include transition-default;
+
+  &:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: rgb(239, 68, 68);
+  }
+
+  svg {
+    width: $spacing-4;
+    height: $spacing-4;
+  }
+}
+
+.backLink {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  padding: $spacing-3 $spacing-4;
+  border-radius: $border-radius-md;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  font-size: $font-size-sm;
+  @include transition-default;
+
+  &:hover {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-primary);
+  }
+
+  svg {
+    width: $spacing-4;
+    height: $spacing-4;
+  }
+}
+
+// -----------------------------
+// Main Content
+// -----------------------------
+.main {
+  flex: 1;
+  margin-left: 260px;
+  min-height: 100vh;
+
+  @include mobile {
+    margin-left: 0;
+  }
+}

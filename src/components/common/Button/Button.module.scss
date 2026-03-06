@@ -53,6 +53,11 @@
   padding: $spacing-4 $spacing-8;
   font-size: $font-size-lg;
   border-radius: $border-radius-md;
+
+  @include mobile {
+    padding: $spacing-3 $spacing-5;
+    font-size: $font-size-base;
+  }
 }
 
 // -----------------------------
