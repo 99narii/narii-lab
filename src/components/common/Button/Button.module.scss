@@ -13,11 +13,12 @@
   align-items: center;
   justify-content: center;
   gap: $spacing-2;
+  height: $spacing-10;
   font-family: $font-family-primary;
   font-weight: $font-weight-medium;
   text-decoration: none;
   border: $border-width-default solid transparent;
-  border-radius: $border-radius-default;
+  border-radius: 6px;
   cursor: pointer;
   @include transition-default;
   @include focus-visible;
@@ -37,25 +38,26 @@
 
 // Small
 .sm {
-  padding: $spacing-2 $spacing-4;
+  height: $spacing-8;
+  padding: 0 $spacing-4;
   font-size: $font-size-sm;
-  border-radius: $border-radius-sm;
 }
 
 // Medium (Default)
 .md {
-  padding: $spacing-3 $spacing-6;
+  padding: 0 $spacing-6;
   font-size: $font-size-base;
 }
 
 // Large
 .lg {
-  padding: $spacing-4 $spacing-8;
+  height: $spacing-12;
+  padding: 0 $spacing-8;
   font-size: $font-size-lg;
-  border-radius: $border-radius-md;
 
   @include mobile {
-    padding: $spacing-3 $spacing-5;
+    height: $spacing-10;
+    padding: 0 $spacing-5;
     font-size: $font-size-base;
   }
 }

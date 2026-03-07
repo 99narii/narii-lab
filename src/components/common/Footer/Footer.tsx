@@ -21,7 +21,7 @@ export const Footer = () => {
   return (
     <footer className={styles.footer} role="contentinfo">
       <div className={styles.container}>
-        {/* 상단 영역 */}
+        {/* 상단 영역 (데스크톱) */}
         <div className={styles.top}>
           {/* 로고 & 설명 */}
           <div className={styles.brand}>
@@ -31,7 +31,7 @@ export const Footer = () => {
                 <>
                   브랜딩, 기획, 디자인, 개발까지.
                   <br />
-                  당신의 비즈니스를 디지털로 완성합니다.
+                  당신의 비즈니스를 함께 고민합니다.
                 </>
               ) : (
                 <>
@@ -75,6 +75,21 @@ export const Footer = () => {
                 </a>
               </li>
             </ul>
+          </div>
+        </div>
+
+        {/* 모바일 간소화 영역 */}
+        <div className={styles.mobileInfo}>
+          <Logo variant="white" />
+          <p className={styles.mobileDescription}>
+            {language === 'ko'
+              ? '당신의 비즈니스를 함께 고민합니다.'
+              : 'We complete your business digitally.'}
+          </p>
+          <div className={styles.mobileContact}>
+            <span>NAHEE KIM</span>
+            <span className={styles.separator}>/</span>
+            <a href="mailto:nanahee3@naver.com">nanahee3@naver.com</a>
           </div>
         </div>
 

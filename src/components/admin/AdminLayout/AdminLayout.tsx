@@ -5,7 +5,7 @@
 // 관리자 페이지 레이아웃 (인증 보호)
 // ===========================================
 
-import { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts';
@@ -56,6 +56,15 @@ const navItems = [
       </svg>
     ),
   },
+  {
+    href: '/admin/inquiries',
+    label: 'Inquiries',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+      </svg>
+    ),
+  },
 ];
 
 // -----------------------------
@@ -65,6 +74,7 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
   const pathname = usePathname();
   const router = useRouter();
   const { user, loading, signOut } = useAuth();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // 로그인 안 된 경우 로그인 페이지로 리다이렉트
   useEffect(() => {
@@ -72,6 +82,11 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
       router.push('/login');
     }
   }, [user, loading, router]);
+
+  // 페이지 변경 시 사이드바 닫기
+  useEffect(() => {
+    setIsSidebarOpen(false);
+  }, [pathname]);
 
   // 로딩 중이거나 로그인 안 된 경우
   if (loading || !user) {
@@ -84,11 +99,45 @@ export const AdminLayout = ({ children }: AdminLayoutProps) => {
 
   return (
     <div className={styles.layout}>
+      {/* Mobile Header */}
+      <header className={styles.mobileHeader}>
+        <button
+          className={styles.menuButton}
+          onClick={() => setIsSidebarOpen(true)}
+          aria-label="메뉴 열기"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+        <span className={styles.mobileTitle}>Admin</span>
+      </header>
+
+      {/* Overlay */}
+      {isSidebarOpen && (
+        <div
+          className={styles.overlay}
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className={styles.sidebar}>
+      <aside className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ''}`}>
         <div className={styles.logo}>
           <Link href="/admin">narii lab</Link>
           <span className={styles.badge}>Admin</span>
+          <button
+            className={styles.closeButton}
+            onClick={() => setIsSidebarOpen(false)}
+            aria-label="메뉴 닫기"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
         </div>
 
         <nav className={styles.nav}>

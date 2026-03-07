@@ -1,0 +1,129 @@
+// ===========================================
+// Alert Styles
+// ===========================================
+
+@use '@/styles/abstracts' as *;
+
+// -----------------------------
+// Overlay
+// -----------------------------
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  @include flex-center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: $spacing-4;
+  animation: fadeIn $duration-fast $ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// -----------------------------
+// Alert Box
+// -----------------------------
+.alert {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--color-bg-primary);
+  border-radius: $border-radius-xl;
+  padding: $spacing-8;
+  text-align: center;
+  box-shadow: $shadow-xl;
+  animation: slideUp $duration-normal $ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY($spacing-4);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// -----------------------------
+// Icon
+// -----------------------------
+.icon {
+  width: $spacing-16;
+  height: $spacing-16;
+  margin: 0 auto $spacing-5;
+  @include flex-center;
+  border-radius: $border-radius-full;
+
+  svg {
+    width: $spacing-8;
+    height: $spacing-8;
+  }
+
+  &.success {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: rgb(34, 197, 94);
+  }
+
+  &.error {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: rgb(239, 68, 68);
+  }
+
+  &.info {
+    background-color: var(--color-primary-100);
+    color: var(--color-primary);
+  }
+}
+
+// -----------------------------
+// Content
+// -----------------------------
+.content {
+  margin-bottom: $spacing-6;
+}
+
+.title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+  margin-bottom: $spacing-2;
+}
+
+.message {
+  font-size: $font-size-base;
+  color: var(--color-text-secondary);
+  line-height: $line-height-relaxed;
+  white-space: pre-line;
+}
+
+// -----------------------------
+// Button
+// -----------------------------
+.button {
+  width: 100%;
+  height: $spacing-10;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-neutral-0;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  @include transition-default;
+
+  &:hover {
+    background-color: var(--color-primary-400);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: $shadow-focus;
+  }
+}

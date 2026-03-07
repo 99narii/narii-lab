@@ -26,7 +26,7 @@ export const homeData = {
       ko: 'We design with intention',
       en: 'We design with intention',
     },
-    titleAriaLabel: '당신의 비즈니스를 디지털로 완성합니다',
+    titleAriaLabel: '당신의 비즈니스를 함께 고민하겠습니다.',
     services: [
       { id: 'branding', text: 'branding', delay: 0 },
       { id: 'plan', text: 'plan', delay: 200 },
@@ -70,7 +70,7 @@ export const homeData = {
       {
         id: 'experience',
         title: {
-          ko: '풍부한 경험',
+          ko: '다양한 경험',
           en: 'Rich Experience',
         },
         description: {

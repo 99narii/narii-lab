@@ -80,6 +80,10 @@
 // -----------------------------
 @mixin section-padding {
   padding-block: $section-padding-y;
+
+  @media (max-width: 767px) {
+    padding-block: $spacing-10;
+  }
 }
 
 // -----------------------------

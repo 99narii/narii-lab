@@ -61,7 +61,9 @@
 // 연락처 정보 영역
 // -----------------------------
 .contactInfo {
-  // 스타일
+  @include mobile {
+    display: none;
+  }
 }
 
 .infoTitle {
@@ -150,11 +152,24 @@
     border-color: var(--color-border-brand);
     box-shadow: $shadow-focus;
   }
+
 }
 
 .textarea {
   resize: vertical;
   min-height: 8rem;
+}
+
+// -----------------------------
+// Character Count
+// 글자 수 카운터
+// -----------------------------
+.charCount {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: $spacing-2;
+  font-size: $font-size-sm;
+  color: var(--color-text-tertiary);
 }
 
 // -----------------------------

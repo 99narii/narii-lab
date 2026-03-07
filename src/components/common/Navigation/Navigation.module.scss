@@ -26,12 +26,41 @@
     box-shadow: $shadow-xl;
     transform: translateX(100%);
     @include transition-default;
-    z-index: 100;
+    z-index: 1001;
     padding-top: $spacing-20;
 
     // 열림 상태
     &.open {
       transform: translateX(0);
+    }
+  }
+}
+
+// -----------------------------
+// Close Button (Mobile)
+// 모바일 닫기 버튼
+// -----------------------------
+.closeButton {
+  display: none;
+
+  @include mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: $spacing-4;
+    right: $spacing-4;
+    width: $spacing-10;
+    height: $spacing-10;
+    background: none;
+    border: none;
+    border-radius: $border-radius-default;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    @include transition-default;
+
+    &:hover {
+      background-color: var(--color-neutral-100);
     }
   }
 }

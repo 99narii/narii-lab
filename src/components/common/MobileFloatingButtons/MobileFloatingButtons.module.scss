@@ -20,7 +20,7 @@
     position: fixed;
     bottom: $spacing-6;
     right: $spacing-4;
-    z-index: 1000;
+    z-index: 999;
   }
 }
 
@@ -29,11 +29,12 @@
 // 메인 토글 버튼
 // -----------------------------
 .mainButton {
-  width: $spacing-14;
-  height: $spacing-14;
+  width: $spacing-10;
+  height: $spacing-10;
   @include flex-center;
   background-color: var(--color-primary);
   color: $color-neutral-0;
+  border: 1px solid var(--color-bg-primary);
   border-radius: $border-radius-full;
   box-shadow: $shadow-lg;
   @include transition-default;
@@ -44,8 +45,6 @@
   }
 
   &.active {
-    background-color: var(--color-neutral-800);
-
     .menuIcon {
       transform: rotate(90deg);
     }
@@ -81,8 +80,8 @@
 // 개별 버튼
 // -----------------------------
 .button {
-  width: $spacing-12;
-  height: $spacing-12;
+  width: $spacing-10;
+  height: $spacing-10;
   @include flex-center;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);

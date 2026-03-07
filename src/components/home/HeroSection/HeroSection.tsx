@@ -216,7 +216,7 @@ export const HeroSection = () => {
         {/* 스크롤 유도 표시 - 서비스가 다 안 나왔을 때만 */}
         {!allVisible && isBoardVisible && (
           <div className={styles.scrollHint} aria-hidden="true">
-            <span className={styles.scrollText}>scroll</span>
+            {/* <span className={styles.scrollText}>scroll</span> */}
             <span className={styles.scrollArrow}>↓</span>
           </div>
         )}

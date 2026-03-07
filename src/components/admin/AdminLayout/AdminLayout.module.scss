@@ -35,6 +35,66 @@
   display: flex;
   min-height: 100vh;
   background-color: var(--color-bg-secondary);
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+// -----------------------------
+// Mobile Header
+// -----------------------------
+.mobileHeader {
+  display: none;
+
+  @include mobile {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    padding: $spacing-4;
+    background-color: var(--color-bg-primary);
+    border-bottom: $border-width-default solid var(--color-border-primary);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+}
+
+.menuButton {
+  @include flex-center;
+  width: $spacing-10;
+  height: $spacing-10;
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  cursor: pointer;
+
+  svg {
+    width: $spacing-6;
+    height: $spacing-6;
+  }
+}
+
+.mobileTitle {
+  font-family: $font-family-display;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  color: var(--color-text-primary);
+}
+
+// -----------------------------
+// Overlay
+// -----------------------------
+.overlay {
+  display: none;
+
+  @include mobile {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+  }
 }
 
 // -----------------------------
@@ -53,11 +113,43 @@
   z-index: 100;
 
   @include mobile {
-    width: 100%;
-    height: auto;
-    position: relative;
-    border-right: none;
-    border-bottom: $border-width-default solid var(--color-border-primary);
+    width: 280px;
+    z-index: 300;
+    transform: translateX(-100%);
+    @include transition-default;
+
+    &.open {
+      transform: translateX(0);
+    }
+  }
+}
+
+// -----------------------------
+// Close Button (Mobile)
+// -----------------------------
+.closeButton {
+  display: none;
+
+  @include mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    width: $spacing-8;
+    height: $spacing-8;
+    background: transparent;
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+
+    svg {
+      width: $spacing-5;
+      height: $spacing-5;
+    }
+
+    &:hover {
+      color: var(--color-text-primary);
+    }
   }
 }
 
@@ -225,5 +317,6 @@
 
   @include mobile {
     margin-left: 0;
+    min-height: auto;
   }
 }

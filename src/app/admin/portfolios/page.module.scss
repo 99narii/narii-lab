@@ -6,6 +6,10 @@
 
 .page {
   padding: $spacing-6;
+
+  @include mobile {
+    padding: $spacing-4;
+  }
 }
 
 // -----------------------------
@@ -113,6 +117,7 @@
 
   @include mobile {
     flex-wrap: wrap;
+    gap: $spacing-3;
   }
 }
 
@@ -148,6 +153,11 @@
 .info {
   flex: 1;
   min-width: 0;
+
+  @include mobile {
+    flex: none;
+    width: calc(100% - 80px - $spacing-3);
+  }
 }
 
 .itemTitle {
@@ -174,6 +184,24 @@
   &::before {
     content: '·';
     margin-right: $spacing-2;
+  }
+}
+
+// -----------------------------
+// Status & Actions Row
+// -----------------------------
+.statusActions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+  margin-left: auto;
+
+  @include mobile {
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 0;
+    padding-top: $spacing-3;
+    border-top: $border-width-thin solid var(--color-border-light);
   }
 }
 

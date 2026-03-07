@@ -31,6 +31,10 @@
 .heroContainer {
   @include container;
   max-width: 60rem;
+
+  @include mobile {
+    padding: 0;
+  }
 }
 
 .heroTitle {
@@ -42,6 +46,7 @@
   margin-bottom: $spacing-12;
 
   @include mobile {
+    font-size: $font-size-2xl;
     margin-bottom: $spacing-8;
   }
 }
@@ -65,7 +70,7 @@
   }
 
   @include mobile {
-    font-size: $font-size-base;
+    font-size: $font-size-sm;
     margin-bottom: $spacing-4;
   }
 }
@@ -97,6 +102,7 @@
   @include mobile {
     grid-template-columns: 1fr;
     gap: $spacing-8;
+    padding: 0;
   }
 }
 
@@ -108,11 +114,10 @@
     > * {
       direction: ltr;
     }
-  }
 
-  @include mobile {
-    .serviceContainer {
+    @include mobile {
       direction: ltr;
+      padding: 0;
     }
   }
 }
@@ -122,7 +127,7 @@
 // 서비스 이미지 영역
 // -----------------------------
 .serviceImage {
-  @include aspect-ratio(4, 3);
+  @include aspect-ratio(2, 1);
   border-radius: $border-radius-xl;
   overflow: hidden;
 }
@@ -144,9 +149,29 @@
   font-weight: $font-weight-bold;
   color: var(--color-primary);
   opacity: 0.3;
+  animation: floatScale 4s ease-in-out infinite;
 
   @include mobile {
     font-size: $font-size-2xl;
+  }
+}
+
+// 둥둥 떠다니면서 스케일 애니메이션
+@keyframes floatScale {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate($spacing-4, -$spacing-6) scale(1.1);
+  }
+  50% {
+    transform: translate(-$spacing-3, -$spacing-8) scale(0.95);
+  }
+  75% {
+    transform: translate(-$spacing-5, -$spacing-3) scale(1.05);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
   }
 }
 
@@ -178,6 +203,10 @@
   font-weight: $font-weight-bold;
   color: var(--color-text-primary);
   margin-bottom: $spacing-3;
+
+  @include mobile {
+    font-size: $font-size-2xl;
+  }
 }
 
 .serviceSubtitle {
@@ -196,9 +225,10 @@
   @include typography('body-lg');
   color: var(--color-text-secondary);
   line-height: $line-height-relaxed;
+  white-space: pre-line;
 
   @include mobile {
-    font-size: $font-size-base;
+    font-size: $font-size-sm;
   }
 }
 
@@ -224,18 +254,18 @@
   margin-bottom: $spacing-5;
 
   @include mobile {
-    font-size: $font-size-3xl;
+    font-size: $font-size-2xl;
   }
 }
 
 .ctaDescription {
   @include typography('body-lg');
-  color: $color-primary-100;
+  color: $color-neutral-0;
   margin-bottom: $spacing-8;
   line-height: $line-height-relaxed;
 
   @include mobile {
-    font-size: $font-size-base;
+    font-size: $font-size-sm;
     margin-bottom: $spacing-6;
   }
 }

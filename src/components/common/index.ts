@@ -12,3 +12,4 @@ export { Providers } from './Providers';
 export { Modal } from './Modal';
 export { PortfolioModal } from './PortfolioModal';
 export { MobileFloatingButtons } from './MobileFloatingButtons';
+export { Alert } from './Alert';

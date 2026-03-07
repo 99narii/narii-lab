@@ -72,6 +72,7 @@
   @include card;
   overflow: hidden;
   cursor: pointer;
+  border-radius: 8px;
   @include transition-default;
 
   &:hover {
@@ -185,7 +186,8 @@
 // 제목
 // -----------------------------
 .title {
-  @include typography('heading-4');
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
   color: var(--color-text-primary);
   margin-bottom: $spacing-2;
 }

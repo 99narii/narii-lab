@@ -15,22 +15,21 @@ export interface ServiceItem {
 export const aboutData = {
   hero: {
     title: {
-      ko: '의미 있는 아이디어를,\n좋은 경험으로 만듭니다.',
+      ko: '의미 있는 아이디어를,\n가치있는 경험으로 만듭니다.',
       en: 'We turn meaningful ideas\ninto great experiences.',
     },
     description: {
-      ko: `narii lab은 크리에이티브를 통해
+      ko: `사용자의 생각과 의견에 귀 기울이는 것으로 부터 시작하여
 브랜드와 사용자를 자연스럽게 연결합니다.
 
-우리는 사용자를 '관점'이 아닌
-하나의 삶으로 바라보는 데서 디자인을 시작합니다.
+사용자를 애정하는 마음에서부터가 비즈니스의 시작이라고 생각합니다.
 더 나은 경험이, 더 나은 일상으로 이어질 수 있도록
 충분히 듣고 함께 고민합니다.
 
 그 과정을 통해
 성장하는 방향을 설계하고,
 소통을 바탕으로 한 디자인과
-계속해서 진화하는 경험을 만들어갑니다.`,
+계속해서 개선하는 경험을 만들어갑니다.`,
       en: `narii lab naturally connects
 brands and users through creativity.
 
@@ -57,37 +56,37 @@ and build experiences that continue to evolve.`,
         title: 'Branding',
         subtitle: {
           ko: '브랜드의 본질을 담다',
-          en: 'Capturing the essence of brand',
+          en: 'Capturing the Essence',
         },
         description: {
-          ko: '브랜드 아이덴티티는 단순한 로고나 색상이 아닙니다. 우리는 브랜드의 철학, 가치, 그리고 고객과의 약속을 시각적 언어로 번역합니다. 일관된 브랜드 경험을 통해 고객의 마음에 오래 남는 인상을 만들어냅니다.',
-          en: 'Brand identity is more than just a logo or colors. We translate brand philosophy, values, and promises to customers into visual language. Through consistent brand experiences, we create lasting impressions in customers\' minds.',
+          ko: '이 서비스가 "왜" 필요한지, 근본적인 이유에서부터 시작합니다.\n사용자의 기억에 남는 서비스를 만들어내기 위해 브랜드의 입장에서, 소비자의 입장에서 지속적으로 고민합니다.',
+          en: 'We start by asking "why" this service is necessary. To create a lasting impression, we constantly look at the product from both the brand\'s vision and the consumer\'s perspective.',
         },
         image: '/images/about/branding.jpg',
       },
       {
         id: 'planning',
-        title: 'Planning',
+        title: 'Template',
         subtitle: {
-          ko: '사용자 중심의 설계',
-          en: 'User-centered design',
+          ko: '확장성을 고려한 모듈화 설계',
+          en: 'Scalable Modular Design',
         },
         description: {
-          ko: '좋은 기획은 사용자를 깊이 이해하는 것에서 시작됩니다. 사용자 리서치, 데이터 분석, 그리고 비즈니스 목표를 종합하여 최적의 서비스 구조와 사용자 여정을 설계합니다. 모든 결정에는 명확한 근거가 있습니다.',
-          en: 'Good planning starts with deep understanding of users. We combine user research, data analysis, and business goals to design optimal service structures and user journeys. Every decision has clear rationale.',
+          ko: 'Why?\n서비스는 지속적으로 변화하고 성장합니다. 유지보수에 용이한 설계를 고려하지 않으면 기능 추가나 작은 수정에도 서비스 전체가 흔들릴 수 있습니다.\nHow?\nUI-컴포넌트-섹션-페이지 단위로 템플릿화하는 방식을 선호합니다. 반복 작업 등의 불필요한 리소스를 줄여 사용성과 퀄리티를 높이는 데 집중합니다.',
+          en: 'Why?\nServices evolve and grow. Without maintenance-friendly design, even small changes can compromise the whole system.\nHow?\nWe prefer modularizing into UI-Component-Section-Page units. By minimizing repetitive tasks, we focus on enhancing usability and overall quality.',
         },
         image: '/images/about/planning.jpg',
       },
       {
         id: 'design',
-        title: 'Design',
+        title: 'Design Tokens',
         subtitle: {
-          ko: '아름다움과 기능의 조화',
-          en: 'Harmony of beauty and function',
+          ko: '일관적이며 유연한 대응',
+          en: 'Consistent & Flexible Systems',
         },
         description: {
-          ko: '우리는 미적 완성도와 사용성 사이에서 균형을 찾습니다. 직관적인 인터페이스, 섬세한 인터랙션, 그리고 일관된 디자인 시스템을 통해 사용자가 자연스럽게 몰입할 수 있는 경험을 만들어냅니다.',
-          en: 'We find balance between aesthetic perfection and usability. Through intuitive interfaces, delicate interactions, and consistent design systems, we create experiences where users naturally become immersed.',
+          ko: '테마 변경, 디자인 변경, 템플릿 활용에도 유연하게 대응할 수 있도록 디자인 토큰화를 적용하여 탄탄한 UI 설계를 지향합니다.',
+          en: 'We prioritize robust UI design through tokenization. This allows us to respond flexibly to theme changes, design updates, and template reuse while maintaining a solid structure.',
         },
         image: '/images/about/design.jpg',
       },
@@ -95,12 +94,12 @@ and build experiences that continue to evolve.`,
         id: 'development',
         title: 'Development',
         subtitle: {
-          ko: '기술로 가치를 실현',
-          en: 'Realizing value through technology',
+          ko: '기본에 충실한 설계',
+          en: 'Architecture Faithful to the Basics',
         },
         description: {
-          ko: '최신 기술 스택과 검증된 아키텍처로 안정적이고 확장 가능한 솔루션을 구축합니다. 성능 최적화, 접근성, 그리고 유지보수성을 모두 고려하여 오래 사용할 수 있는 제품을 만듭니다.',
-          en: 'We build stable and scalable solutions with the latest technology stack and proven architecture. Considering performance optimization, accessibility, and maintainability, we create products that last.',
+          ko: '"개발을 넘어, 서비스의 도메인에 맞는 최적의 설계 전략을 선택합니다."\n웹 접근성: 언제 어디서든 사각지대가 생기지 않도록 기능을 온전히 누릴 수 있는 서비스를 구축합니다.\nSEO/AEO/GEO: 서비스의 성격에 맞춰 마케팅에도 활용할 수 있는 구조적 기틀을 만듭니다.',
+          en: 'Beyond simple coding, we choose the optimal strategy for the specific domain.\nAccessibility: We build services where everyone can fully enjoy features without any blind spots.\nSEO/AEO/GEO: We create a structural foundation that can be utilized for marketing, tailored to the unique nature of each service.',
         },
         image: '/images/about/development.jpg',
       },

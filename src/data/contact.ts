@@ -50,8 +50,8 @@ export const contactData = {
         en: 'John Doe',
       },
       error: {
-        ko: '이름을 입력해주세요',
-        en: 'Please enter your name',
+        ko: '이름은 1~20자로 입력해주세요',
+        en: 'Name must be 1-20 characters',
       },
     },
     email: {
@@ -71,6 +71,10 @@ export const contactData = {
         en: 'Phone (Optional)',
       },
       placeholder: '010-0000-0000',
+      error: {
+        ko: '올바른 연락처를 입력해주세요 (0으로 시작, 9~11자리)',
+        en: 'Please enter a valid phone number (starts with 0, 9-11 digits)',
+      },
     },
     message: {
       label: {
@@ -97,8 +101,8 @@ export const contactData = {
       },
     },
     success: {
-      ko: '문의가 접수되었습니다. 빠른 시일 내에 답변드리겠습니다.',
-      en: 'Your message has been submitted. We will reply soon.',
+      ko: '문의가 접수되었습니다.\n빠른 시일 내에 답변드리겠습니다.',
+      en: 'Your message has been submitted.\nWe will reply soon.',
     },
   },
 };

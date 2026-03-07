@@ -15,7 +15,7 @@
   padding-block: $spacing-16;
 
   @include mobile {
-    padding-block: $spacing-12;
+    padding: $spacing-4 0;
   }
 }
 
@@ -29,7 +29,7 @@
 
 // -----------------------------
 // Top Section
-// 상단 섹션 (로고, 네비, 연락처)
+// 상단 섹션 (로고, 네비, 연락처) - 데스크톱만
 // -----------------------------
 .top {
   display: grid;
@@ -37,9 +37,48 @@
   gap: $spacing-12;
 
   @include mobile {
-    grid-template-columns: 1fr;
-    gap: $spacing-8;
+    display: none;
   }
+}
+
+// -----------------------------
+// Mobile Info
+// 모바일 간소화 영역
+// -----------------------------
+.mobileInfo {
+  display: none;
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    font-size: $font-size-sm;
+    color: $color-neutral-300;
+
+    a {
+      color: $color-neutral-300;
+      text-decoration: none;
+
+      &:hover {
+        color: $color-primary-200;
+      }
+    }
+  }
+}
+
+.mobileDescription {
+  color: $color-neutral-400;
+}
+
+.mobileContact {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+}
+
+.separator {
+  color: $color-neutral-500;
 }
 
 // -----------------------------
@@ -130,6 +169,10 @@
   border: none;
   border-top: $border-width-thin solid $color-neutral-700;
   margin-block: $spacing-8;
+
+  @include mobile {
+    display: none;
+  }
 }
 
 // -----------------------------
@@ -140,9 +183,7 @@
   @include flex-between;
 
   @include mobile {
-    flex-direction: column;
-    gap: $spacing-4;
-    text-align: center;
+    display: none;
   }
 }
 

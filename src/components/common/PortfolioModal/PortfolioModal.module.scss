@@ -183,9 +183,11 @@
 }
 
 .tag {
-  display: inline-block;
-  padding: $spacing-1 $spacing-3;
-  font-size: $font-size-xs;
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 $spacing-3;
+  font-size: $font-size-sm;
   font-weight: $font-weight-medium;
   color: var(--color-primary);
   background-color: var(--color-primary-100);

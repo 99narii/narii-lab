@@ -135,28 +135,29 @@ export default function AdminPortfoliosPage() {
                 </p>
               </div>
 
-              {/* Status */}
-              <button
-                className={`${styles.status} ${portfolio.published ? styles.published : styles.draft}`}
-                onClick={() => handleTogglePublish(portfolio.id, portfolio.published)}
-              >
-                {portfolio.published ? '발행됨' : '초안'}
-              </button>
-
-              {/* Actions */}
-              <div className={styles.actions}>
-                <Link
-                  href={`/admin/portfolios/${portfolio.id}`}
-                  className={styles.editButton}
-                >
-                  수정
-                </Link>
+              {/* Status & Actions */}
+              <div className={styles.statusActions}>
                 <button
-                  className={styles.deleteButton}
-                  onClick={() => handleDelete(portfolio.id, portfolio.title)}
+                  className={`${styles.status} ${portfolio.published ? styles.published : styles.draft}`}
+                  onClick={() => handleTogglePublish(portfolio.id, portfolio.published)}
                 >
-                  삭제
+                  {portfolio.published ? '발행됨' : '초안'}
                 </button>
+
+                <div className={styles.actions}>
+                  <Link
+                    href={`/admin/portfolios/${portfolio.id}`}
+                    className={styles.editButton}
+                  >
+                    수정
+                  </Link>
+                  <button
+                    className={styles.deleteButton}
+                    onClick={() => handleDelete(portfolio.id, portfolio.title)}
+                  >
+                    삭제
+                  </button>
+                </div>
               </div>
             </div>
           ))}
